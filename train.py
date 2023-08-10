@@ -1,11 +1,8 @@
-import numpy as np
 import pandas as pd
 import torch
 from tqdm.auto import tqdm
 import wandb
-from dataset import colon_train_dataloader, colon_valid_dataloader, prostate_train_dataloader, prostate_valid_dataloader
-# ,gastric_train_dataloader, gastric_valid_dataloader, total_train_dataloader, total_valid_dataloader
-from utils import Config, seed_everything
+from dataset import colon_train_dataloader, colon_valid_dataloader, prostate_train_dataloader, prostate_valid_dataloader, gastric_train_dataloader, gastric_valid_dataloader, total_train_dataloader, total_valid_dataloader
 
 
 def train_single_task(network, config, organ):

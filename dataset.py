@@ -28,25 +28,19 @@ class CustomImageDataset(torch.utils.data.Dataset):
             self.img_labels = label
             self.img_dir = dir
             self.transform = tr_tf
+            self.organs = organ
 
         elif mode == 'valid':
             self.img_labels = label
             self.img_dir = dir
             self.transform = ts_tf
+            self.organs = organ
 
         else :
             self.img_labels = label
             self.img_dir = dir
             self.transform = ts_tf
-
-        if organ == 'colon':
-            self.organ = 0
-
-        elif organ == 'prostate':
-            self.organ = 1
-
-        else :
-            self.organ = 2
+            self.organs = organ
 
     def __len__(self):
         return len(self.img_labels)
@@ -54,7 +48,7 @@ class CustomImageDataset(torch.utils.data.Dataset):
     def __getitem__(self, idx):
         image = cv2.cvtColor(cv2.imread(self.img_dir.iloc[idx]), cv2.COLOR_BGR2RGB)
         label = self.img_labels.iloc[idx]
-        organ = self.organ
+        organ = self.organs.iloc[idx]
         transformed = self.transform(image=image)
         image = transformed['image']
         return image, label, organ
@@ -95,18 +89,21 @@ def colon_data_read():
                                                                                                                                                                )
 def colon_train_dataloader(batch_size):
     train_dir, train_label, valid_dir, valid_label, test_dir, test_label = colon_data_read()
-    TrainDataset = CustomImageDataset(mode='train', transform=tr_tf, label = train_label, dir = train_dir, organ = 'colon')
+    organ = pd.Seires([0 for i in len(train_dir)])
+    TrainDataset = CustomImageDataset(mode='train', transform=tr_tf, label = train_label, dir = train_dir, organ = organ)
     TrainDataloader = torch.utils.data.DataLoader(TrainDataset, batch_size=batch_size, shuffle=True)
     return TrainDataloader
 
 def colon_valid_dataloader(batch_size):
     train_dir, train_label, valid_dir, valid_label, test_dir, test_label = colon_data_read()
-    ValidDataset = CustomImageDataset(mode='valid', transform=ts_tf, label = valid_label, dir = valid_dir, organ = 'colon')
+    organ = pd.Seires([0 for i in len(valid_dir)])
+    ValidDataset = CustomImageDataset(mode='valid', transform=ts_tf, label = valid_label, dir = valid_dir, organ = organ)
     ValidDataloader = torch.utils.data.DataLoader(ValidDataset, batch_size=batch_size, shuffle=False)
     return ValidDataloader
 def colon_test_dataloader():
     train_dir, train_label, valid_dir, valid_label, test_dir, test_label = colon_data_read()
-    TestDataset = CustomImageDataset(mode='test', transform=ts_tf, label = test_label, dir = test_dir, organ = 'colon')
+    organ = pd.Seires([0 for i in len(test_dir)])
+    TestDataset = CustomImageDataset(mode='test', transform=ts_tf, label = test_label, dir = test_dir, organ = organ)
     TestDataloader = torch.utils.data.DataLoader(TestDataset, shuffle=False)
     return TestDataloader
 
@@ -144,18 +141,21 @@ def prostate_data_read():
                                                                                                                                                                )
 def prostate_train_dataloader(batch_size):
     train_dir, train_label, valid_dir, valid_label, test_dir, test_label = prostate_data_read()
-    TrainDataset = CustomImageDataset(mode='train', transform=tr_tf, label = train_label, dir = train_dir, organ = 'prostate')
+    organ = pd.Seires([1 for i in len(train_dir)])
+    TrainDataset = CustomImageDataset(mode='train', transform=tr_tf, label = train_label, dir = train_dir, organ = organ)
     TrainDataloader = torch.utils.data.DataLoader(TrainDataset, batch_size=batch_size, shuffle=True)
     return TrainDataloader
 
 def prostate_valid_dataloader(batch_size):
     train_dir, train_label, valid_dir, valid_label, test_dir, test_label = prostate_data_read()
-    ValidDataset = CustomImageDataset(mode='valid', transform=ts_tf, label = valid_label, dir = valid_dir, organ = 'prostate')
+    organ = pd.Seires([1 for i in len(valid_dir)])
+    ValidDataset = CustomImageDataset(mode='valid', transform=ts_tf, label = valid_label, dir = valid_dir, organ = organ)
     ValidDataloader = torch.utils.data.DataLoader(ValidDataset, batch_size=batch_size, shuffle=False)
     return ValidDataloader
 def prostate_test_dataloader():
     train_dir, train_label, valid_dir, valid_label, test_dir, test_label = prostate_data_read()
-    TestDataset = CustomImageDataset(mode='test', transform=ts_tf, label = test_label, dir = test_dir, organ = 'prostate')
+    organ = pd.Seires([1 for i in len(test_dir)])
+    TestDataset = CustomImageDataset(mode='test', transform=ts_tf, label = test_label, dir = test_dir, organ = organ)
     TestDataloader = torch.utils.data.DataLoader(TestDataset, shuffle=False)
     return TestDataloader
 
@@ -220,30 +220,69 @@ def gastric_data_read():
 
 def gastric_train_dataloader(batch_size):
     train_dir, train_label, valid_dir, valid_label, test_dir, test_label = gastric_data_read()
-    TrainDataset = CustomImageDataset(mode='train', transform=tr_tf, label = train_label, dir = train_dir, organ = 'gastric')
+    organ = pd.Seires([2 for i in len(train_dir)])
+    TrainDataset = CustomImageDataset(mode='train', transform=tr_tf, label = train_label, dir = train_dir, organ = organ)
     TrainDataloader = torch.utils.data.DataLoader(TrainDataset, batch_size=batch_size, shuffle=True)
     return TrainDataloader
 
 def gastric_valid_dataloader(batch_size):
     train_dir, train_label, valid_dir, valid_label, test_dir, test_label = gastric_data_read()
-    ValidDataset = CustomImageDataset(mode='valid', transform=ts_tf, label = valid_label, dir = valid_dir, organ = 'gastric')
+    organ = pd.Seires([2 for i in len(valid_dir)])
+    ValidDataset = CustomImageDataset(mode='valid', transform=ts_tf, label = valid_label, dir = valid_dir, organ = organ)
     ValidDataloader = torch.utils.data.DataLoader(ValidDataset, batch_size=batch_size, shuffle=False)
     return ValidDataloader
 
 def gastric_test_dataloader():
     train_dir, train_label, valid_dir, valid_label, test_dir, test_label = gastric_data_read()
-    TestDataset = CustomImageDataset(mode='test', transform=ts_tf, label = test_label, dir = test_dir, organ = 'gastric')
+    organ = pd.Seires([2 for i in len(test_dir)])
+    TestDataset = CustomImageDataset(mode='test', transform=ts_tf, label = test_label, dir = test_dir, organ = organ)
     TestDataloader = torch.utils.data.DataLoader(TestDataset, shuffle=False)
     return TestDataloader
 
 """
 total
--> need for modify self.organ(for shuffle)
 + need to decide how to use data (problem of data imbalance)
+Oversampling, undersampling, sampling with weights, ...
 """
 
+def total_train_dataloader(batch_size):
+    colon_train_dir, colon_train_label, colon_valid_dir, colon_valid_label, colon_test_dir, colon_test_label = colon_data_read()
+    prostate_train_dir, prostate_train_label, prostate_valid_dir, prostate_valid_label, prostate_test_dir, prostate_test_label = prostate_data_read()
+    gastric_train_dir, gastric_train_label, gastric_valid_dir, gastric_valid_label, gastric_test_dir, gastric_test_label = gastric_data_read()
 
-"""
-dann
-"""
+    train_dir = pd.concat([colon_train_dir, prostate_train_dir, gastric_train_dir], ignore_index= True)
+    train_organ = pd.concat([pd.Series([0 for i in range(len(colon_train_dir))]), pd.Series([1 for i in range(len(prostate_train_dir))]), pd.Series([2 for i in range(len(gastric_train_dir))])], ignore_index = True)
+    train_label = pd.concat([colon_train_label, prostate_train_label, gastric_train_label], ignore_index= True)
+
+    TrainDataset = CustomImageDataset(mode='train', transform=tr_tf, label = train_label, dir = train_dir, organ = train_organ)
+    TrainDataloader = torch.utils.data.DataLoader(TrainDataset, batch_size=batch_size, shuffle=True)
+    return TrainDataloader
+
+def total_valid_dataloader(batch_size):
+    colon_train_dir, colon_train_label, colon_valid_dir, colon_valid_label, colon_test_dir, colon_test_label = colon_data_read()
+    prostate_train_dir, prostate_train_label, prostate_valid_dir, prostate_valid_label, prostate_test_dir, prostate_test_label = prostate_data_read()
+    gastric_train_dir, gastric_train_label, gastric_valid_dir, gastric_valid_label, gastric_test_dir, gastric_test_label = gastric_data_read()
+
+    valid_dir = pd.concat([colon_valid_dir, prostate_valid_dir, gastric_valid_dir], ignore_index= True)
+    valid_organ = pd.concat([pd.Series([0 for i in range(len(colon_valid_dir))]), pd.Series([1 for i in range(len(prostate_valid_dir))]), pd.Series([2 for i in range(len(gastric_valid_dir))])], ignore_index = True)
+    valid_label = pd.concat([colon_valid_label, prostate_valid_label, gastric_valid_label], ignore_index=True)
+
+    ValidDataset = CustomImageDataset(mode='valid', transform=ts_tf, label = valid_label, dir = valid_dir, organ = valid_organ)
+    ValidDataloader = torch.utils.data.DataLoader(ValidDataset, batch_size=batch_size, shuffle=False)
+    return ValidDataloader
+
+def total_test_dataloader():
+    colon_train_dir, colon_train_label, colon_valid_dir, colon_valid_label, colon_test_dir, colon_test_label = colon_data_read()
+    prostate_train_dir, prostate_train_label, prostate_valid_dir, prostate_valid_label, prostate_test_dir, prostate_test_label = prostate_data_read()
+    gastric_train_dir, gastric_train_label, gastric_valid_dir, gastric_valid_label, gastric_test_dir, gastric_test_label = gastric_data_read()
+
+    test_dir = pd.concat([colon_test_dir, prostate_test_dir, gastric_test_dir], ignore_index=True)
+    test_organ = pd.concat(
+        [pd.Series([0 for i in range(len(colon_test_dir))]), pd.Series([1 for i in range(len(prostate_test_dir))]),
+         pd.Series([2 for i in range(len(gastric_test_dir))])], ignore_index=True)
+    test_label = pd.concat([colon_test_label, prostate_test_label, gastric_test_label], ignore_index=True)
+
+    TestDataset = CustomImageDataset(mode='test', transform=ts_tf, label = test_label, dir = test_dir, organ = test_organ)
+    TestDataloader = torch.utils.data.DataLoader(TestDataset, shuffle=False)
+    return TestDataloader
 

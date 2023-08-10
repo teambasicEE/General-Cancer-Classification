@@ -31,11 +31,47 @@ valid     5046  1599  11925  2231   20801
 test      6721  1986  16113  3157   27977
 ```
 
+- gastric
+```angular2html
+            BN    WD     MD    PD     SUM
+Dataset                          
+train    27707  10196 14999  12046   64948
+valid     8398  2239  2370   2374    15381
+test      7955  1795  2458   3579    15787
+```
+# Experiments & Tasks
+## Tasks
+- Single-Organ Model
+```
+python colon.py --epochs 30 --lr 0.001 --batch_size 40
+```
+```
+python prostate.py --epochs 30 --lr 0.001 --batch_size 40
+```
+```
+python gastric.py --epochs 30 --lr 0.001 --batch_size 40
+```
+- Total-organ Model
+```
+python total_organ.py --epochs 30 --lr 0.001 --batch_size 40
+```
+- Multi-task Model
+```
+python multi_task.py --epochs 30 --lr 0.001 --batch_size 40
+```
+- DANN
+```
+python dann.py --epochs 30 --lr 0.001 --batch_size 40
+```
+
 # todo
-- [ ]  dataloader for each organs
-- [ ] classification model for each organ
-- [ ] dataloader for integrated model
-- [ ] classification for integrated model(careful of how using data)
-- [ ] apply DANN
+- [x]  dataloader for each organs -> code finished, not experimented
+- [x] classification model for each organ -> code finished, not experimented
+- [x] dataloader for integrated model -> code finished, not experimented
+- [x] classification for integrated model -> code finished, not experimented
+- [ ] experiments for single and integrated models
+- [ ] think of how using data
+- [x] apply DANN -> code finished, not experimented
 - [ ] Visulaize with T-SNE
 - [ ] apply MixStyle
+
