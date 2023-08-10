@@ -68,7 +68,7 @@ def train_one_organ(network, config, organ):
 
             batch_loss.append(l.item())
             batch_acc.append(sum(torch.max(output, dim=1)[1].to(device) == labels) / img.shape[0])
-            wandb.log({'train_batch_acc': batch_acc[-1], 'train_batch_loss': batch_loss[-1], 'lr': scheduler.get_lr()})
+            wandb.log({'train_batch_acc': batch_acc[-1], 'train_batch_loss': batch_loss[-1], 'lr': scheduler.get_last_lr()})
 
         loss.append(sum(batch_loss[-len(TrainDataloader):]) / len(TrainDataloader))
         acc.append(sum(batch_acc[-len(TrainDataloader):]) / len(TrainDataloader))
