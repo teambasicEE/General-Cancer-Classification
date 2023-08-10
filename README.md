@@ -39,7 +39,6 @@ train    27707  10196 14999  12046   64948
 valid     8398  2239  2370   2374    15381
 test      7955  1795  2458   3579    15787
 ```
-<<<<<<< HEAD
 # Experiments & Tasks
 ## Tasks
 - Single-Organ Model
