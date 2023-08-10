@@ -5,25 +5,27 @@ import os
 import torch
 from tqdm.auto import tqdm
 from utils import Config, seed_everything, analysis
-from train import train_single_task
-from dataset import colon_test_dataloader
-from models import single_task_model
+from train import train_dann
+from dataset import total_test_dataloader
+from models import DANN_model
 
 
-def colon_train_test(network, config):
+
+def dann_train_test(network, config):
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-    network = train_single_task(network, config, 'colon')
+    network = train_dann(network, config, 'colon')
 
-    result = pd.DataFrame(columns=['infer', 'label'])
+    result = pd.DataFrame(columns=['infer_label', 'label', 'infer_organ', 'organ'])
     network.to(device)
-    TestDataloader = colon_test_dataloader()
+    TestDataloader = total_test_dataloader()
 
     print('inferring...')
 
     for idx, i in enumerate(iter(TestDataloader)):
         img = i[0].to(device)
         label = i[1]
-        result.loc[idx] = [torch.argmax(network((img))).item(), label[0].item()]
+        organ = i[2]
+        result.loc[idx] = [torch.argmax(network((img))[0]).item(), label[0].item(), torch.argmax(network((img))[1]).item(), organ[0].item()]
 
     base_path = 'C:\\Users\\User\\Desktop\\General-Cancer-Classification\\results\\'
 

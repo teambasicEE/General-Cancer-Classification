@@ -37,4 +37,5 @@ test      6721  1986  16113  3157   27977
 - [ ] dataloader for integrated model
 - [ ] classification for integrated model(careful of how using data)
 - [ ] apply DANN
+- [ ] Visulaize with T-SNE
 - [ ] apply MixStyle

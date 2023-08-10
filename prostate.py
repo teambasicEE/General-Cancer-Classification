@@ -5,14 +5,14 @@ import os
 import torch
 from tqdm.auto import tqdm
 from utils import Config, seed_everything, analysis
-from train import train_one_organ
+from train import train_single_task
 from dataset import prostate_test_dataloader
-from models import single_organ_model
+from models import single_task_model
 
 
 def prostate_train_test(network, config):
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-    network = train_one_organ(network, config, 'prostate')
+    network = train_single_task(network, config, 'prostate')
 
     result = pd.DataFrame(columns=['infer', 'label'])
     network.to(device)
@@ -36,5 +36,5 @@ def prostate_train_test(network, config):
 if __name__ == "__main__":
     seed_everything(42)
     config = Config()
-    network = single_organ_model
-    colon_train_test(network, config)
+    network = single_task_model
+    prostate_train_test(network, config)

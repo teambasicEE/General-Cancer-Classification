@@ -3,12 +3,12 @@ import pandas as pd
 import torch
 from tqdm.auto import tqdm
 import wandb
-from dataset import colon_train_dataloader, colon_valid_dataloader
-    # , prostate_train_dataloader, prostate_valid_dataloader, gastric_train_dataloader, gastric_valid_dataloader
+from dataset import colon_train_dataloader, colon_valid_dataloader, prostate_train_dataloader, prostate_valid_dataloader
+# ,gastric_train_dataloader, gastric_valid_dataloader, total_train_dataloader, total_valid_dataloader
 from utils import Config, seed_everything
 
 
-def train_one_organ(network, config, organ):
+def train_single_task(network, config, organ):
     """
     training function for one-organ datas
     """
@@ -30,9 +30,12 @@ def train_one_organ(network, config, organ):
     elif organ == 'prostate':
         TrainDataloader = prostate_train_dataloader(batch_size=config.batch_size)
         ValidDataloader = prostate_valid_dataloader(batch_size=config.batch_size)
-    else :
+    elif organ == 'gastric' :
         TrainDataloader = gastric_train_dataloader(batch_size=config.batch_size)
         ValidDataloader = gastric_valid_dataloader(batch_size=config.batch_size)
+    else :
+        TrainDataloader = total_train_dataloader(batch_size = config.batch_szie)
+        ValidDataloader = total_valid_dataloader(batch_size = config.batch_szie)
 
     criterion = torch.nn.CrossEntropyLoss()
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -110,9 +113,13 @@ def train_one_organ(network, config, organ):
     return network
 
 
-def train():
+def train_multi_task():
+
     return
 
+def train_dann():
+    return
 
 if __name__ == "__main__":
     seed_everything(42)
+    config = Config()

@@ -164,3 +164,14 @@ gastric
 """
 
 
+"""
+total
+-> need for modify self.organ(for shuffle)
++ need to decide how to use data (problem of data imbalance)
+"""
+
+
+"""
+dann
+"""
+
