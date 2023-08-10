@@ -21,7 +21,15 @@ TeamBasic Project - General Cancer classification
 3. Learning strategy(domain adaptation, generalization)
    - Use ensembles, DANN, MixStyle, etc..
 
-
+# Dataset Info
+- colon
+```angular2html
+            BN    WD     MD    PD     SUM
+Dataset                          
+train    16129  4809  33947  6507   61392
+valid     5046  1599  11925  2231   20801
+test      6721  1986  16113  3157   27977
+```
 
 # todo
 - [ ]  dataloader for each organs
