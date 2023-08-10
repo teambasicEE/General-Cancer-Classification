@@ -3,7 +3,8 @@ import pandas as pd
 import torch
 from tqdm.auto import tqdm
 import wandb
-from dataset import colon_train_dataloader, colon_valid_dataloader, prostate_train_dataloader, prostate_valid_dataloader, gastric_train_dataloader, gastric_valid_dataloader
+from dataset import colon_train_dataloader, colon_valid_dataloader
+    # , prostate_train_dataloader, prostate_valid_dataloader, gastric_train_dataloader, gastric_valid_dataloader
 from utils import Config, seed_everything
 
 
@@ -40,7 +41,7 @@ def train_one_organ(network, config, organ):
     lr = config.lr
     batch_size = config.batch_size
     optimizer = torch.optim.Adam(network.parameters(), lr=lr)
-    scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, len(TrainDataloader / 5), 0.0001)
+    scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, len(TrainDataloader)/5, 0.0001)
 
     network.to(device)
     loss = []
@@ -54,7 +55,7 @@ def train_one_organ(network, config, organ):
         batch_acc = []
 
         network.train()
-        for img, labels in (iter(TrainDataloader)):
+        for img, labels, _ in (iter(TrainDataloader)):
             img, labels = torch.autograd.Variable(img), torch.autograd.Variable(labels)
             img, labels = img.to(device), labels.to(device)
 
@@ -74,7 +75,7 @@ def train_one_organ(network, config, organ):
         wandb.log({'train_acc' : acc[-1], 'train_loss' : loss[-1]})
 
         network.eval()
-        for img, labels in iter(ValidDataloader):
+        for img, labels, _ in iter(ValidDataloader):
             img, labels = torch.autograd.Variable(img), torch.autograd.Variable(labels)
             img, labels = img.to(device), labels.to(device)
 
