@@ -31,6 +31,16 @@ valid     5046  1599  11925  2231   20801
 test      6721  1986  16113  3157   27977
 ```
 
+- gastric
+```angular2html
+            BN    WD     MD    PD     SUM
+Dataset                          
+train    27707  10196 14999  12046   64948
+valid     8398  2239  2370   2374    20801
+test      7955  1795  2458   3579    15787
+```
+
+
 # todo
 - [ ]  dataloader for each organs
 - [ ] classification model for each organ
