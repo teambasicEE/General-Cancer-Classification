@@ -74,3 +74,37 @@ def analysis(result):
     print(metrics)
 
     return
+
+def multi_task_analysis(result):
+    analysis(result)
+
+    print('-' * 30)
+    accuracy = (result['infer_organ'] == result['organ']).mean()
+    metrics = pd.crosstab(result['infer_organ'], result['organ'])
+    recall_metrics = pd.crosstab(result['infer_organ'], result['organ'], normalize='columns')
+    precision_metrics = pd.crosstab(result['infer_organ'], result['organ'], normalize='index')
+
+    def harmonics(grade):
+        return (recall_metrics[grade][grade] * precision_metrics[grade][grade]) / (
+                recall_metrics[grade][grade] + precision_metrics[grade][grade])
+
+    print('-' * 30)
+    print(f'Accuracy : {accuracy:.3f}')
+    print('\n', end='')
+    print(f'Recall for colon : {recall_metrics[0][0]:.3f}')
+    print(f'Precision for colon : {precision_metrics[0][0]:.3f}')
+    print(f'f1-score for colon : {harmonics(0):.3f}')
+    print('\n', end='')
+    print(f'Recall for prostate : {recall_metrics[1][1]:.3f}')
+    print(f'Precision for prostate : {precision_metrics[1][1]:.3f}')
+    print(f'f1-score for prostate : {harmonics(1):.3f}')
+    print('\n', end='')
+    print(f'Recall for gastric : {recall_metrics[2][2]:.3f}')
+    print(f'Precision for gastric : {precision_metrics[2][2]:.3f}')
+    print(f'f1-score for gastric : {harmonics(2):.3f}')
+    print('\n', end='')
+
+    print('-' * 30)
+    print('Confusion Matrix : ')
+    print(metrics)
+    return

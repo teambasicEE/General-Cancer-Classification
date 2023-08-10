@@ -3,13 +3,12 @@ import torch
 from utils import Config, seed_everything, multi_task_analysis
 from train import train_multi_task
 from dataset import total_test_dataloader
-from models import DANN_model
+from models import multi_task_model
 
 
-
-def dann_train_test(network, config):
+def multi_task_train_test(network, config):
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-    network = train_multi_task(network, config, 'dann')
+    network = train_multi_task(network, config)
 
     result = pd.DataFrame(columns=['infer', 'label', 'infer_organ', 'organ'])
     network.to(device)
@@ -26,7 +25,7 @@ def dann_train_test(network, config):
     base_path = 'C:\\Users\\User\\Desktop\\General-Cancer-Classification\\results\\'
 
     acc = sum(result['infer'] == result['label']) / len(result)
-    result.to_csv(base_path + f'dann_infer_result_acc_{acc:.5f}.csv')
+    result.to_csv(base_path + f'multi_task_infer_result_acc_{acc:.5f}.csv')
 
     multi_task_analysis(result)
 
@@ -34,5 +33,5 @@ def dann_train_test(network, config):
 if __name__ == "__main__":
     seed_everything(42)
     config = Config()
-    network = DANN_model
-    dann_train_test(network, config)
+    network = multi_task_model
+    multi_task_train_test(network, config)

@@ -183,57 +183,55 @@ def prepare_gastric_data(data_label):
     data_label = data_label[data_label.values < '4']
     i = i + 1
 
+def gastric_data_read():
+    data_dir = ['C:\\Users\\User\\Desktop\\gastric_train\\',
+                'C:\\Users\\User\\Desktop\\gastric_valid\\',
+                'C:\\Users\\User\\Desktop\\gastric_test\\'
+                ]
 
-data_dir = ['C:\\Users\\User\\Desktop\\gastric_train\\',
-            'C:\\Users\\User\\Desktop\\gastric_valid\\',
-            'C:\\Users\\User\\Desktop\\gastric_test\\'
-            ]
+    dataset_1 = glob(data_dir[0] + '*')
+    dataset_1 = [i + '\\*' for i in dataset_1]
+    dataset1 = []
+    for i in dataset_1:
+        dataset1.extend(glob(i))
 
-dataset_1 = glob(data_dir[0] + '*')
-dataset_1 = [i + '\\*' for i in dataset_1]
-dataset1 = []
-for i in dataset_1:
-    dataset1.extend(glob(i))
+    dataset_2 = glob(data_dir[1] + '*')
+    dataset_2 = [i + '\\*' for i in dataset_2]
+    dataset2 = []
+    for i in dataset_2:
+        dataset2.extend(glob(i))
 
-dataset_2 = glob(data_dir[1] + '*')
-dataset_2 = [i + '\\*' for i in dataset_2]
-dataset2 = []
-for i in dataset_2:
-    dataset2.extend(glob(i))
+    dataset_3 = glob(data_dir[1] + '*')
+    dataset_3 = [i + '\\*' for i in dataset_3]
+    dataset3 = []
+    for i in dataset_3:
+        dataset3.extend(glob(i))
 
-dataset_3 = glob(data_dir[1] + '*')
-dataset_3 = [i + '\\*' for i in dataset_3]
-dataset3 = []
-for i in dataset_3:
-    dataset3.extend(glob(i))
-
-data_1_label = pd.Series(map(lambda x: x.split('.')[0].split('_')[-1], dataset1))
-data_2_label = pd.Series(map(lambda x: x.split('.')[0].split('_')[-1], dataset2))
-data_3_label = pd.Series(map(lambda x: int(x.split('.')[-2].split('_')[-1]) - 1, dataset3))
+    data_1_label = pd.Series(map(lambda x: x.split('.')[0].split('_')[-1], dataset1))
+    data_2_label = pd.Series(map(lambda x: x.split('.')[0].split('_')[-1], dataset2))
+    data_3_label = pd.Series(map(lambda x: int(x.split('.')[-2].split('_')[-1]) - 1, dataset3))
 
 
-prepare_gastric_data(data_1_label)
-prepare_gastric_data(data_2_label)
-prepare_gastric_data(data_3_label)
+    prepare_gastric_data(data_1_label)
+    prepare_gastric_data(data_2_label)
+    prepare_gastric_data(data_3_label)
 
-train_dir = dataset1
-valid_dir = dataset2
-test_dir = dataset3
-train_label = data_1_label
-valid_label = data_2_label
-test_label = data_3_label
+    return pd.Series(dataset1), data_1_label, pd.Seires(dataset2), data_2_label, pd.Series(dataset3), data_3_label
 
-def colon_train_dataloader(batch_size):
+def gastric_train_dataloader(batch_size):
+    train_dir, train_label, valid_dir, valid_label, test_dir, test_label = gastric_data_read()
     TrainDataset = CustomImageDataset(mode='train', transform=tr_tf, label = train_label, dir = train_dir, organ = 'gastric')
     TrainDataloader = torch.utils.data.DataLoader(TrainDataset, batch_size=batch_size, shuffle=True)
     return TrainDataloader
 
-def colon_valid_dataloader(batch_size):
+def gastric_valid_dataloader(batch_size):
+    train_dir, train_label, valid_dir, valid_label, test_dir, test_label = gastric_data_read()
     ValidDataset = CustomImageDataset(mode='valid', transform=ts_tf, label = valid_label, dir = valid_dir, organ = 'gastric')
     ValidDataloader = torch.utils.data.DataLoader(ValidDataset, batch_size=batch_size, shuffle=False)
     return ValidDataloader
 
-def colon_test_dataloader():
+def gastric_test_dataloader():
+    train_dir, train_label, valid_dir, valid_label, test_dir, test_label = gastric_data_read()
     TestDataset = CustomImageDataset(mode='test', transform=ts_tf, label = test_label, dir = test_dir, organ = 'gastric')
     TestDataloader = torch.utils.data.DataLoader(TestDataset, shuffle=False)
     return TestDataloader
