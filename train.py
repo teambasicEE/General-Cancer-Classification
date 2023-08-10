@@ -41,7 +41,7 @@ def train_one_organ(network, config, organ):
     lr = config.lr
     batch_size = config.batch_size
     optimizer = torch.optim.Adam(network.parameters(), lr=lr)
-    scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, len(TrainDataloader)/5, 0.0001)
+    scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, len(TrainDataloader)//5, 0.0001)
 
     network.to(device)
     loss = []
