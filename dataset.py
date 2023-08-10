@@ -114,10 +114,50 @@ def colon_test_dataloader():
 prostate
 """
 
+def prostate_data_read():
 
+    prostate_path = 'C:\\Users\\User\\Desktop\\prostate_harvard\\'
 
+    prostate_train_folder = 'C:\\Users\\User\\Desktop\\prostate_harvard\\patches_train_750_v0\\'
+    prostate_valid_folder = 'C:\\Users\\User\\Desktop\\prostate_harvard\\patches_validation_750_v0\\'
+    prostate_test1_folder = 'C:\\Users\\User\\Desktop\\prostate_harvard\\patches_test_750_v0\\patho_1\\'
+    prostate_test2_folder = 'C:\\Users\\User\\Desktop\\prostate_harvard\\patches_test_750_v0\\patho_2\\'
 
+    prostate_train_dir = []
+    prostate_valid_dir = []
+    prostate_test_dir = []
 
+    for i in prostate_train_folder:
+        prostate_train_dir.extend(glob(prostate_train_folder + i + '\\*'))
+    for i in prostate_valid_folder:
+        prostate_valid_dir.extend(glob(prostate_valid_folder + i + '\\*'))
+    for i in prostate_test1_folder:
+        prostate_test_dir.extend(glob(prostate_test1_folder + i + '\\*'))
+    for i in prostate_test2_folder:
+        prostate_test_dir.extend(glob(prostate_test2_folder + i + '\\*'))
+
+    prostate_train_label = [file_to_label(i) for i in prostate_train_dir]
+    prostate_valid_label = [file_to_label(i) for i in prostate_valid_dir]
+    prostate_test_label = [file_to_label(i) for i in prostate_test_dir]
+
+    return pd.Series(prostate_train_dir), pd.Series(prostate_train_label), pd.Series(prostate_valid_dir), pd.Series(prostate_valid_label), pd.Series(prostate_test_dir), pd.Series(prostate_test_label
+                                                                                                                                                               )
+def prostate_train_dataloader(batch_size):
+    train_dir, train_label, valid_dir, valid_label, test_dir, test_label = prostate_data_read()
+    TrainDataset = CustomImageDataset(mode='train', transform=tr_tf, label = train_label, dir = train_dir, organ = 'prostate')
+    TrainDataloader = torch.utils.data.DataLoader(TrainDataset, batch_size=batch_size, shuffle=True)
+    return TrainDataloader
+
+def prostate_valid_dataloader(batch_size):
+    train_dir, train_label, valid_dir, valid_label, test_dir, test_label = prostate_data_read()
+    ValidDataset = CustomImageDataset(mode='valid', transform=ts_tf, label = valid_label, dir = valid_dir, organ = 'prostate')
+    ValidDataloader = torch.utils.data.DataLoader(ValidDataset, batch_size=batch_size, shuffle=False)
+    return ValidDataloader
+def prostate_test_dataloader():
+    train_dir, train_label, valid_dir, valid_label, test_dir, test_label = prostate_data_read()
+    TestDataset = CustomImageDataset(mode='test', transform=ts_tf, label = test_label, dir = test_dir, organ = 'prostate')
+    TestDataloader = torch.utils.data.DataLoader(TestDataset, shuffle=False)
+    return TestDataloader
 
 """
 gastric
