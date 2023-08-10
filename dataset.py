@@ -23,7 +23,7 @@ ts_tf = A.Compose([
 ])
 
 class CustomImageDataset(torch.utils.data.Dataset):
-    def __init__(self, mode, transform, label, dir):
+    def __init__(self, mode, transform, label, dir, organ):
         if mode == 'train':
             self.img_labels = label
             self.img_dir = dir
@@ -39,15 +39,25 @@ class CustomImageDataset(torch.utils.data.Dataset):
             self.img_dir = dir
             self.transform = ts_tf
 
+        if organ == 'colon':
+            self.organ = 0
+
+        elif organ == 'prostate':
+            self.organ = 1
+
+        else :
+            self.organ = 2
+
     def __len__(self):
         return len(self.img_labels)
 
     def __getitem__(self, idx):
         image = cv2.cvtColor(cv2.imread(self.img_dir.iloc[idx]), cv2.COLOR_BGR2RGB)
-        label = [self.img_labels.iloc[idx], 0]              # second 0 for 'colon' among colon, prostate, gastric
+        label = self.img_labels.iloc[idx]
+        organ = self.organ
         transformed = self.transform(image=image)
         image = transformed['image']
-        return image, label
+        return image, label, organ
 
 def file_to_label(filename):
     return int(filename.split('\\')[-1].split('.')[-2].split('_')[-1]) - 1
@@ -70,11 +80,11 @@ def colon_data_read():
     colon_valid_dir = []
     colon_test_dir = []
 
-    for i in train_folder:
+    for i in colon_train_folder:
         colon_train_dir.extend(glob(colon_path + i + '\\*\\*'))
-    for i in valid_folder:
+    for i in colon_valid_folder:
         colon_valid_dir.extend(glob(colon_path + i + '\\*\\*'))
-    for i in test_folder:
+    for i in colon_test_folder:
         colon_test_dir.extend(glob(colon_path + i + '\\*\\*'))
 
     colon_train_label = [file_to_label(i) for i in colon_train_dir]
@@ -85,20 +95,20 @@ def colon_data_read():
                                                                                                                                                                )
 def colon_train_dataloader(batch_size):
     train_dir, train_label, valid_dir, valid_label, test_dir, test_label = colon_data_read()
-    TrainDataset = CustomImageDataset(mode='train', transform=tr_tf, label = train_label, dir = train_dir)
+    TrainDataset = CustomImageDataset(mode='train', transform=tr_tf, label = train_label, dir = train_dir, organ = 'colon')
     TrainDataloader = torch.utils.data.DataLoader(TrainDataset, batch_size=batch_size, shuffle=True)
-    return TrainDataset, TrainDataloader
+    return TrainDataloader
 
 def colon_valid_dataloader(batch_size):
     train_dir, train_label, valid_dir, valid_label, test_dir, test_label = colon_data_read()
-    ValidDataset = CustomImageDataset(mode='valid', transform=ts_tf, label = valid_label, dir = valid_dir)
+    ValidDataset = CustomImageDataset(mode='valid', transform=ts_tf, label = valid_label, dir = valid_dir, organ = 'colon')
     ValidDataloader = torch.utils.data.DataLoader(ValidDataset, batch_size=batch_size, shuffle=False)
-    return ValidDataset, ValidDataloader
+    return ValidDataloader
 def colon_test_dataloader():
     train_dir, train_label, valid_dir, valid_label, test_dir, test_label = colon_data_read()
-    TestDataset = CustomImageDataset(mode='test', transform=ts_tf, label = test_label, dir = test_dir)
+    TestDataset = CustomImageDataset(mode='test', transform=ts_tf, label = test_label, dir = test_dir, organ = 'colon')
     TestDataloader = torch.utils.data.DataLoader(TestDataset, shuffle=False)
-    return TestDataset, TestDataloader
+    return TestDataloader
 
 """
 prostate
