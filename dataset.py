@@ -174,8 +174,8 @@ def prepare_gastric_data(data_label):
             data_label[i] = '3'
 
         i = i + 1
-
-    data_label = data_label.drop(index=data_label[data_label.values > '4'].index)
+    data_label = data_label.astype('float64')
+    data_label = data_label.drop(index=data_label.loc[data_label > 4].index)
     return data_label
 
 
