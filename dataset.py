@@ -174,6 +174,7 @@ def prepare_gastric_data(data_label):
             data_label[i] = '3'
 
         i = i + 1
+        data_label = data_label.astype(float)
     return data_label
 
 
@@ -183,12 +184,14 @@ def gastric_data_read():
                 'C:\\Users\\User\\Desktop\\gastric_test\\'
                 ]
 
-    dataset_1 = glob(data_dir[0] + '*')
+    dataset1 = glob(data_dir[0] + '\\*\\*')
     dataset_1 = [i + '\\*' for i in dataset_1]
     dataset1 = []
     for i in dataset_1:
         dataset1.extend(glob(i))
 
+    print(dataset1[0])
+    print(len(dataset1))
     dataset_2 = glob(data_dir[1] + '*')
     dataset_2 = [i + '\\*' for i in dataset_2]
     dataset2 = []
@@ -211,8 +214,8 @@ def gastric_data_read():
     data_3_label = prepare_gastric_data(data_3_label)
 
     index1 = data_1_label.loc[data_1_label < 4].index
-    index2 = data_2_label.loc[data_1_label < 4].index
-    index3 = data_3_label.loc[data_1_label < 4].index
+    index2 = data_2_label.loc[data_2_label < 4].index
+    index3 = data_3_label.loc[data_3_label < 4].index
 
     dataset1 = pd.Series(dataset1).loc[index1]
     dataset2 = pd.Series(dataset2).loc[index2]
