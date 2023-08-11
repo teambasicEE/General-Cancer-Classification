@@ -179,60 +179,45 @@ def prepare_gastric_data(data_label):
 
 
 def gastric_data_read():
-    data_dir = ['C:\\Users\\User\\Desktop\\gastric_train\\',
-                'C:\\Users\\User\\Desktop\\gastric_valid\\',
-                'C:\\Users\\User\\Desktop\\gastric_test\\'
-                ]
+    gastric_path = 'C:\\Users\\User\\Desktop\\gastric\\gastric_cancer_wsi_1024_80_her01_step05_bright230_resize05\\'
+    gastric_data_csv = pd.read_csv('C:\\Users\\User\\Desktop\\gastric\\gastric_cancer_wsi_1024_80_her01_split.csv')
 
-    dataset1 = glob(data_dir[0] + '\\*\\*')
-    dataset_1 = [i + '\\*' for i in dataset_1]
-    dataset1 = []
-    for i in dataset_1:
-        dataset1.extend(glob(i))
+    gastric_train_folder = gastric_data_csv[gastric_data_csv['Task'] == 'train'].WSI
+    gastric_valid_folder = gastric_data_csv[gastric_data_csv['Task'] == 'val'].WSI
+    gastric_test_folder = gastric_data_csv[gastric_data_csv['Task'] == 'test'].WSI
 
-    print(dataset1[0])
-    print(len(dataset1))
-    dataset_2 = glob(data_dir[1] + '*')
-    dataset_2 = [i + '\\*' for i in dataset_2]
-    dataset2 = []
-    for i in dataset_2:
-        dataset2.extend(glob(i))
+    gastric_train_dir = []
+    gastric_valid_dir = []
+    gastric_test_dir = []
 
-    dataset_3 = glob(data_dir[1] + '*')
-    dataset_3 = [i + '\\*' for i in dataset_3]
-    dataset3 = []
-    for i in dataset_3:
-        dataset3.extend(glob(i))
+    for i in gastric_train_folder:
+        gastric_train_dir.extend(glob(gastric_path + i + '\\*\\*'))
+    for i in gastric_valid_folder:
+        gastric_valid_dir.extend(glob(gastric_path + i + '\\*\\*'))
+    for i in gastric_test_folder:
+        gastric_test_dir.extend(glob(gastric_path + i + '\\*\\*'))
 
-    data_1_label = pd.Series(map(lambda x: x.split('.')[0].split('_')[-1], dataset1))
-    data_2_label = pd.Series(map(lambda x: x.split('.')[0].split('_')[-1], dataset2))
-    data_3_label = pd.Series(map(lambda x: x.split('.')[0].split('_')[-1], dataset3))
+    gastric_train_label = [file_to_label(i) + 1 for i in gastric_train_dir]
+    gastric_valid_label = [file_to_label(i) + 1 for i in gastric_valid_dir]
+    gastric_test_label = [file_to_label(i) + 1 for i in gastric_test_dir]
 
+    gastric_train_label = prepare_gastric_data(gastric_train_label)
+    gastric_valid_label = prepare_gastric_data(gastric_valid_label)
+    gastric_test_label = prepare_gastric_data(gastric_test_label)
 
-    data_1_label = prepare_gastric_data(data_1_label)
-    data_2_label = prepare_gastric_data(data_2_label)
-    data_3_label = prepare_gastric_data(data_3_label)
+    index1 = gastric_train_label.loc[gastric_train_label < 4].index
+    index2 = gastric_valid_label.loc[gastric_valid_label < 4].index
+    index3 = gastric_test_label.loc[gastric_test_label < 4].index
 
-    index1 = data_1_label.loc[data_1_label < 4].index
-    index2 = data_2_label.loc[data_2_label < 4].index
-    index3 = data_3_label.loc[data_3_label < 4].index
+    gastric_train_dir = pd.Series(gastric_train_dir).loc[index1].reset_index().drop(columns='index')
+    gastric_valid_dir = pd.Series(gastric_valid_dir).loc[index2].reset_index().drop(columns='index')
+    gastric_test_dir = pd.Series(gastric_test_dir).loc[index3].reset_index().drop(columns='index')
 
-    dataset1 = pd.Series(dataset1).loc[index1]
-    dataset2 = pd.Series(dataset2).loc[index2]
-    dataset3 = pd.Series(dataset3).loc[index2]
+    gastric_train_label = gastric_train_label.loc[index1].reset_index().drop(columns='index')
+    gastric_valid_label = gastric_valid_label.loc[index2].reset_index().drop(columns='index')
+    gastric_test_label = gastric_test_label.loc[index3].reset_index().drop(columns='index')
 
-    data_1_label = data_1_label.loc[index1]
-    data_2_label = data_2_label.loc[index2]
-    data_3_label = data_3_label.loc[index3]
-
-    dataset1 = dataset1.reset_index()
-    dataset2 = dataset2.reset_index()
-    dataset3 = dataset3.reset_index()
-    data_1_label = data_1_label.reset_index()
-    data_2_label = data_2_label.reset_index()
-    data_3_label = data_3_label.reset_index()
-
-    return dataset1, data_1_label, dataset2, data_2_label, dataset3, data_3_label
+    return gastric_train_dir, gastric_train_label, gastric_valid_dir, gastric_valid_label, gastric_test_dir, gastric_test_label
 
 def gastric_train_dataloader(batch_size):
     train_dir, train_label, valid_dir, valid_label, test_dir, test_label = gastric_data_read()
