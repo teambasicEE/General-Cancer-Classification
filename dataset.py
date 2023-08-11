@@ -141,7 +141,7 @@ def prostate_train_dataloader(batch_size):
 
 def prostate_valid_dataloader(batch_size):
     train_dir, train_label, valid_dir, valid_label, test_dir, test_label = prostate_data_read()
-    organ = pd.Series([1 for i in range(len(valid_dir)))
+    organ = pd.Series([1 for i in range(len(valid_dir))])
     ValidDataset = CustomImageDataset(mode='valid', transform=ts_tf, label = valid_label, dir = valid_dir, organ = organ)
     ValidDataloader = torch.utils.data.DataLoader(ValidDataset, batch_size=batch_size, shuffle=False)
     return ValidDataloader
