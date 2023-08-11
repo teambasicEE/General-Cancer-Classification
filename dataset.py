@@ -174,8 +174,6 @@ def prepare_gastric_data(data_label):
             data_label[i] = '3'
 
         i = i + 1
-    data_label = data_label.astype('float64')
-    data_label = data_label.drop(index=data_label.loc[data_label > 4].index)
     return data_label
 
 
@@ -205,14 +203,33 @@ def gastric_data_read():
 
     data_1_label = pd.Series(map(lambda x: x.split('.')[0].split('_')[-1], dataset1))
     data_2_label = pd.Series(map(lambda x: x.split('.')[0].split('_')[-1], dataset2))
-    data_3_label = pd.Series(map(lambda x: int(x.split('.')[-2].split('_')[-1]) - 1, dataset3))
+    data_3_label = pd.Series(map(lambda x: x.split('.')[0].split('_')[-1], dataset3))
 
 
     data_1_label = prepare_gastric_data(data_1_label)
     data_2_label = prepare_gastric_data(data_2_label)
     data_3_label = prepare_gastric_data(data_3_label)
 
-    return pd.Series(dataset1), data_1_label, pd.Series(dataset2), data_2_label, pd.Series(dataset3), data_3_label
+    index1 = data_1_label.loc[data_1_label < 4].index
+    index2 = data_2_label.loc[data_1_label < 4].index
+    index3 = data_3_label.loc[data_1_label < 4].index
+
+    dataset1 = pd.Series(dataset1).loc[index1]
+    dataset2 = pd.Series(dataset2).loc[index2]
+    dataset3 = pd.Series(dataset3).loc[index2]
+
+    data_1_label = data_1_label.loc[index1]
+    data_2_label = data_2_label.loc[index2]
+    data_3_label = data_3_label.loc[index3]
+
+    dataset1 = dataset1.reset_index()
+    dataset2 = dataset2.reset_index()
+    dataset3 = dataset3.reset_index()
+    data_1_label = data_1_label.reset_index()
+    data_2_label = data_2_label.reset_index()
+    data_3_label = data_3_label.reset_index()
+
+    return dataset1, data_1_label, dataset2, data_2_label, dataset3, data_3_label
 
 def gastric_train_dataloader(batch_size):
     train_dir, train_label, valid_dir, valid_label, test_dir, test_label = gastric_data_read()

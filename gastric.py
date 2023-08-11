@@ -2,7 +2,7 @@ import pandas as pd
 import torch
 from utils import Config, seed_everything, analysis
 from train import train_single_task
-from dataset import colon_test_dataloader
+from dataset import gastric_test_dataloader
 from models import single_task_model
 
 
@@ -12,7 +12,7 @@ def gastric_train_test(network, config):
 
     result = pd.DataFrame(columns=['infer', 'label'])
     network.to(device)
-    TestDataloader = colon_test_dataloader()
+    TestDataloader = gastric_test_dataloader()
 
     print('inferring...')
 
