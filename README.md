@@ -1,4 +1,4 @@
-# General-Cancer-Classification
+![image](https://github.com/teambasicEE/General-Cancer-Classification/assets/139537627/aa9ab301-63f1-49ae-bdeb-87243b853852)# General-Cancer-Classification
 ```
 TeamBasic Project - General Cancer classification
 ```
@@ -40,9 +40,9 @@ Test    217  2463  4836   958     8474
 - gastric
 ```angular2html
            BN     WD     MD     PD    SUM
-Train  171143  14193  20815  27642  233793
-Valid   33579   8854   9510   9467   61410
-Test    31720   7247   9892  14386   63245
+Train    26010	  9403  11202	 13003  59618
+Valid     8780	  7083	  5177	  7417  28457
+Test     11304	  7927	  6667	  9060  34958
 ```
 
 # Experiments & Tasks
