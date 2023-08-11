@@ -175,7 +175,7 @@ def prepare_gastric_data(data_label):
 
 def gastric_data_read():
     gastric_path = 'C:\\Users\\User\\Desktop\\gastric_data\\'
-    gastric_data_csv = pd.read_csv('C:\\Users\\User\\Desktop\\gastric_data_seperate.csv')
+    gastric_data_csv = pd.read_csv('C:\\Users\\User\\Desktop\\gastric\\gastric_data_seperate.csv')
 
     gastric_train_folder = gastric_data_csv[gastric_data_csv['Task'] == 'train'].WSI
     gastric_valid_folder = gastric_data_csv[gastric_data_csv['Task'] == 'valid'].WSI
