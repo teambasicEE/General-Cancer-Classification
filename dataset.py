@@ -180,8 +180,8 @@ def prepare_gastric_data(data_label):
         elif data_label[i] == '5':
             data_label[i] = '3'
 
-    data_label = data_label[data_label.values < '4']
-    i = i + 1
+        #data_label = data_label[data_label.values < '4']
+        i = i + 1
 
 def gastric_data_read():
     data_dir = ['C:\\Users\\User\\Desktop\\gastric_train\\',
