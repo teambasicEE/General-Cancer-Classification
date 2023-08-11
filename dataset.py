@@ -174,11 +174,11 @@ def prepare_gastric_data(data_label):
 
 
 def gastric_data_read():
-    gastric_path = 'C:\\Users\\User\\Desktop\\gastric\\gastric_cancer_wsi_1024_80_her01_step05_bright230_resize05\\'
-    gastric_data_csv = pd.read_csv('C:\\Users\\User\\Desktop\\gastric\\gastric_cancer_wsi_1024_80_her01_split.csv')
+    gastric_path = 'C:\\Users\\User\\Desktop\\gastric_data\\'
+    gastric_data_csv = pd.read_csv('C:\\Users\\User\\Desktop\\gastric_data_seperate.csv')
 
     gastric_train_folder = gastric_data_csv[gastric_data_csv['Task'] == 'train'].WSI
-    gastric_valid_folder = gastric_data_csv[gastric_data_csv['Task'] == 'val'].WSI
+    gastric_valid_folder = gastric_data_csv[gastric_data_csv['Task'] == 'valid'].WSI
     gastric_test_folder = gastric_data_csv[gastric_data_csv['Task'] == 'test'].WSI
 
     gastric_train_dir = []
@@ -282,6 +282,3 @@ def total_test_dataloader():
     TestDataset = CustomImageDataset(mode='test', transform=ts_tf, label = test_label, dir = test_dir, organ = test_organ)
     TestDataloader = torch.utils.data.DataLoader(TestDataset, shuffle=False)
     return TestDataloader
-
-if __name__ == "__main__":
-    gastric_train_dataloader(1)
