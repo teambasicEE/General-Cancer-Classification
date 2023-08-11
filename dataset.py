@@ -284,6 +284,3 @@ def total_test_dataloader():
     TestDataloader = torch.utils.data.DataLoader(TestDataset, shuffle=False)
     return TestDataloader
 
-
-if __name__ == "__main__":
-    print(next(iter(gastric_train_dataloader(1))))
