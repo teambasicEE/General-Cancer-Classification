@@ -120,10 +120,10 @@ def prostate_data_read():
     prostate_test1_path = 'C:\\Users\\User\\Desktop\\prostate_harvard\\patches_test_750_v0\\patho_1\\'
     prostate_test2_path = 'C:\\Users\\User\\Desktop\\prostate_harvard\\patches_test_750_v0\\patho_2\\'
 
-    prostate_train_dir = [glob(prostate_train_path + '\\*\\*')]
-    prostate_valid_dir = [glob(prostate_valid_path +  '\\*\\*')]
-    prostate_test1_dir = [glob(prostate_test1_path +  '\\*\\*')]
-    prostate_test2_dir = [glob(prostate_test2_path + '\\*\\*')]
+    prostate_train_dir = glob(prostate_train_path + '\\*\\*')
+    prostate_valid_dir = glob(prostate_valid_path +  '\\*\\*')
+    prostate_test1_dir = glob(prostate_test1_path +  '\\*\\*')
+    prostate_test2_dir = glob(prostate_test2_path + '\\*\\*')
     prostate_test_dir = prostate_test1_dir + prostate_test2_dir
 
     prostate_train_label = [file_to_label(i) +1 for i in prostate_train_dir]
