@@ -36,6 +36,40 @@ test      6721  1986  16113  3157   27977
 Train  2076  6303  4541  2383    15303
 Valid   666   923   573   320     2482
 Test    217  2463  4836   958     8474
+
+
+RESULT
+------------------------------
+Accuracy : 0.868         
+                         
+Recall for Benign : 0.997
+Precision for Benign : 0.999
+f1-score for Benign : 0.499
+
+Recall for WD : 0.176
+Precision for WD : 0.219
+f1-score for WD : 0.098
+
+Recall for MD : 0.915
+Precision for MD : 0.872
+f1-score for MD : 0.446
+
+Recall for PD : 0.789
+Precision for PD : 0.901
+f1-score for PD : 0.421
+
+Precision for Cancer : 0.999
+f1-score for Cancer : 0.500
+
+------------------------------
+Confusion Matrix :
+label     0     1      2     3
+infer
+0      6703     0      4     0
+1        14   349   1099   131
+2         1  1637  14739   535
+3         3     0    271  2491
+
 ```
 - gastric
 ```angular2html
