@@ -173,8 +173,11 @@ def prepare_gastric_data(data_label):
         elif data_label[i] == '5':
             data_label[i] = '3'
 
-        #data_label = data_label[data_label.values < '4']
         i = i + 1
+
+    data_label = data_label.drop(index=data_label[data_label.values > '4'].index)
+    return data_label
+
 
 def gastric_data_read():
     data_dir = ['C:\\Users\\User\\Desktop\\gastric_train\\',
@@ -205,9 +208,9 @@ def gastric_data_read():
     data_3_label = pd.Series(map(lambda x: int(x.split('.')[-2].split('_')[-1]) - 1, dataset3))
 
 
-    prepare_gastric_data(data_1_label)
-    prepare_gastric_data(data_2_label)
-    prepare_gastric_data(data_3_label)
+    data_1_label = prepare_gastric_data(data_1_label)
+    data_2_label = prepare_gastric_data(data_2_label)
+    data_3_label = prepare_gastric_data(data_3_label)
 
     return pd.Series(dataset1), data_1_label, pd.Series(dataset2), data_2_label, pd.Series(dataset3), data_3_label
 
