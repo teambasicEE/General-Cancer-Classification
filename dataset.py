@@ -156,25 +156,21 @@ def prostate_test_dataloader():
 gastric
 """
 def prepare_gastric_data(data_label):
-    i = 0
-    for k in data_label:
-        if data_label[i] == '1':
-            data_label[i] = '0'
+    if data_label == '1':
+        data_label = '0'
 
-        elif data_label[i] == '2':
-            data_label[i] = '0'
+    elif data_label == '2':
+        data_label = '0'
 
-        elif data_label[i] == '3':
-            data_label[i] = '1'
+    elif data_label == '3':
+        data_label = '1'
 
-        elif data_label[i] == '4':
-            data_label[i] = '2'
+    elif data_label == '4':
+        data_label = '2'
 
-        elif data_label[i] == '5':
-            data_label[i] = '3'
+    elif data_label == '5':
+        data_label = '3'
 
-        i = i + 1
-        data_label = data_label.astype(float)
     return data_label
 
 
@@ -191,19 +187,20 @@ def gastric_data_read():
     gastric_test_dir = []
 
     for i in gastric_train_folder:
-        gastric_train_dir.extend(glob(gastric_path + i + '\\*\\*'))
+        gastric_train_dir.extend(glob(gastric_path + i + '\\*'))
     for i in gastric_valid_folder:
-        gastric_valid_dir.extend(glob(gastric_path + i + '\\*\\*'))
+        gastric_valid_dir.extend(glob(gastric_path + i + '\\*'))
     for i in gastric_test_folder:
-        gastric_test_dir.extend(glob(gastric_path + i + '\\*\\*'))
+        gastric_test_dir.extend(glob(gastric_path + i + '\\*'))
 
-    gastric_train_label = [file_to_label(i) + 1 for i in gastric_train_dir]
-    gastric_valid_label = [file_to_label(i) + 1 for i in gastric_valid_dir]
-    gastric_test_label = [file_to_label(i) + 1 for i in gastric_test_dir]
+    gastric_train_label = pd.Series([file_to_label(i) + 1 for i in gastric_train_dir])
+    gastric_valid_label = pd.Series([file_to_label(i) + 1 for i in gastric_valid_dir])
+    gastric_test_label = pd.Series([file_to_label(i) + 1 for i in gastric_test_dir])
 
-    gastric_train_label = prepare_gastric_data(gastric_train_label)
-    gastric_valid_label = prepare_gastric_data(gastric_valid_label)
-    gastric_test_label = prepare_gastric_data(gastric_test_label)
+
+    gastric_train_label = gastric_train_label.apply(prepare_gastric_data).astype(float)
+    gastric_valid_label = gastric_valid_label.apply(prepare_gastric_data).astype(float)
+    gastric_test_label = gastric_test_label.apply(prepare_gastric_data).astype(float)
 
     index1 = gastric_train_label.loc[gastric_train_label < 4].index
     index2 = gastric_valid_label.loc[gastric_valid_label < 4].index
@@ -287,3 +284,6 @@ def total_test_dataloader():
     TestDataloader = torch.utils.data.DataLoader(TestDataset, shuffle=False)
     return TestDataloader
 
+
+if __name__ == "__main__":
+    print(next(iter(gastric_train_dataloader(1))))
