@@ -36,7 +36,21 @@ test      6721  1986  16113  3157   27977
 Train  2076  6303  4541  2383    15303
 Valid   666   923   573   320     2482
 Test    217  2463  4836   958     8474
+```
+- gastric
+```angular2html
+            BN    WD     MD    PD     SUM
+Dataset                          
+train    27707  10196 14999  12046   64948
+valid     8398  2239  2370   2374    15381
+test      7955  1795  2458   3579    15787
+```
 
+# Experiments & Tasks
+## Tasks
+- Single-Organ Model
+```
+python colon.py --epochs 30 --lr 0.001 --batch_size 40
 
 RESULT
 ------------------------------
@@ -69,22 +83,6 @@ infer
 1        14   349   1099   131
 2         1  1637  14739   535
 3         3     0    271  2491
-
-```
-- gastric
-```angular2html
-            BN    WD     MD    PD     SUM
-Dataset                          
-train    27707  10196 14999  12046   64948
-valid     8398  2239  2370   2374    15381
-test      7955  1795  2458   3579    15787
-```
-
-# Experiments & Tasks
-## Tasks
-- Single-Organ Model
-```
-python colon.py --epochs 30 --lr 0.001 --batch_size 40
 ```
 ```
 python prostate.py --epochs 30 --lr 0.001 --batch_size 40
