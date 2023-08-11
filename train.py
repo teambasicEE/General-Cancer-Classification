@@ -70,7 +70,7 @@ def train_single_task(network, config, organ):
             batch_loss.append(l.item())
             batch_acc.append(sum(torch.max(output, dim=1)[1].to(device) == labels) / img.shape[0])
             temp_lr = scheduler.get_last_lr()
-            wandb.log({'train_batch_acc': batch_acc[-1], 'train_batch_loss': batch_loss[-1], 'lr': temp_lr.item()})
+            wandb.log({'train_batch_acc': batch_acc[-1], 'train_batch_loss': batch_loss[-1], 'lr': temp_lr[0]})
 
         loss.append(sum(batch_loss[-len(TrainDataloader):]) / len(TrainDataloader))
         acc.append(sum(batch_acc[-len(TrainDataloader):]) / len(TrainDataloader))
