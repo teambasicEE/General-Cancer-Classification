@@ -115,27 +115,20 @@ def prostate_data_read():
 
     prostate_path = 'C:\\Users\\User\\Desktop\\prostate_harvard\\'
 
-    prostate_train_folder = 'C:\\Users\\User\\Desktop\\prostate_harvard\\patches_train_750_v0\\'
-    prostate_valid_folder = 'C:\\Users\\User\\Desktop\\prostate_harvard\\patches_validation_750_v0\\'
-    prostate_test1_folder = 'C:\\Users\\User\\Desktop\\prostate_harvard\\patches_test_750_v0\\patho_1\\'
-    prostate_test2_folder = 'C:\\Users\\User\\Desktop\\prostate_harvard\\patches_test_750_v0\\patho_2\\'
+    prostate_train_path = 'C:\\Users\\User\\Desktop\\prostate_harvard\\patches_train_750_v0\\'
+    prostate_valid_path = 'C:\\Users\\User\\Desktop\\prostate_harvard\\patches_validation_750_v0\\'
+    prostate_test1_path = 'C:\\Users\\User\\Desktop\\prostate_harvard\\patches_test_750_v0\\patho_1\\'
+    prostate_test2_path = 'C:\\Users\\User\\Desktop\\prostate_harvard\\patches_test_750_v0\\patho_2\\'
 
-    prostate_train_dir = []
-    prostate_valid_dir = []
-    prostate_test_dir = []
+    prostate_train_dir = [glob(prostate_train_path + '\\*\\*')]
+    prostate_valid_dir = [glob(prostate_valid_path +  '\\*\\*')]
+    prostate_test1_dir = [glob(prostate_test1_path +  '\\*\\*')]
+    prostate_test2_dir = [glob(prostate_test2_path + '\\*\\*')]
+    prostate_test_dir = prostate_test1_dir + prostate_test2_dir
 
-    for i in prostate_train_folder:
-        prostate_train_dir.extend(glob(prostate_train_folder + i + '\\*'))
-    for i in prostate_valid_folder:
-        prostate_valid_dir.extend(glob(prostate_valid_folder + i + '\\*'))
-    for i in prostate_test1_folder:
-        prostate_test_dir.extend(glob(prostate_test1_folder + i + '\\*'))
-    for i in prostate_test2_folder:
-        prostate_test_dir.extend(glob(prostate_test2_folder + i + '\\*'))
-
-    prostate_train_label = [file_to_label(i) for i in prostate_train_dir]
-    prostate_valid_label = [file_to_label(i) for i in prostate_valid_dir]
-    prostate_test_label = [file_to_label(i) for i in prostate_test_dir]
+    prostate_train_label = [file_to_label(i) +1 for i in prostate_train_dir]
+    prostate_valid_label = [file_to_label(i) +1 for i in prostate_valid_dir]
+    prostate_test_label = [file_to_label(i) +1 for i in prostate_test_dir]
 
     return pd.Series(prostate_train_dir), pd.Series(prostate_train_label), pd.Series(prostate_valid_dir), pd.Series(prostate_valid_label), pd.Series(prostate_test_dir), pd.Series(prostate_test_label
                                                                                                                                                                )
