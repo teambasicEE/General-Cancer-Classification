@@ -1,4 +1,4 @@
-![image](https://github.com/teambasicEE/General-Cancer-Classification/assets/139537627/aa9ab301-63f1-49ae-bdeb-87243b853852)# General-Cancer-Classification
+# General-Cancer-Classification
 ```
 TeamBasic Project - General Cancer classification
 ```
@@ -86,8 +86,43 @@ infer
 2         1  1637  14739   535
 3         3     0    271  2491
 ```
+
+
 ```
 python prostate.py --epochs 30 --lr 0.001 --batch_size 40
+
+------------------------------
+Accuracy : 0.533            
+                            
+Recall for Benign : 0.599   
+Precision for Benign : 0.474
+f1-score for Benign : 0.265 
+                            
+Recall for WD : 0.507       
+Precision for WD : 0.626    
+f1-score for WD : 0.280     
+
+Recall for MD : 0.535       
+Precision for MD : 0.713    
+f1-score for MD : 0.306     
+
+Recall for PD : 0.573
+Precision for PD : 0.213
+f1-score for PD : 0.155
+
+Recall for Cancer : 0.983
+Precision for Cancer : 0.989
+f1-score for Cancer : 0.493
+
+------------------------------
+Confusion Matrix :
+label    0     1     2    3
+infer
+0      130    65    62   17
+1       37  1249   677   31
+2        2   678  2589  361
+3       48   471  1508  549
+
 ```
 ```
 python gastric.py --epochs 30 --lr 0.001 --batch_size 40
@@ -116,4 +151,5 @@ python dann.py --epochs 30 --lr 0.001 --batch_size 40
 - [x] apply DANN -> code finished, not experimented
 - [ ] Visulaize with T-SNE
 - [ ] apply MixStyle
+- [ ] Improve Prostate's performance 
 
