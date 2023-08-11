@@ -156,20 +156,19 @@ def prostate_test_dataloader():
 gastric
 """
 def prepare_gastric_data(data_label):
-    if data_label == '1':
-        data_label = '0'
+    if data_label == 1:
+        data_label = 0
 
-    elif data_label == '2':
-        data_label = '0'
+    elif data_label == 2:
+        data_label = 0
 
-    elif data_label == '3':
-        data_label = '1'
+    elif data_label == 3:
+        data_label = 1
+    elif data_label == 4:
+        data_label = 2
 
-    elif data_label == '4':
-        data_label = '2'
-
-    elif data_label == '5':
-        data_label = '3'
+    elif data_label == 5:
+        data_label = 3
 
     return data_label
 
@@ -284,3 +283,5 @@ def total_test_dataloader():
     TestDataloader = torch.utils.data.DataLoader(TestDataset, shuffle=False)
     return TestDataloader
 
+if __name__ == "__main__":
+    gastric_train_dataloader(1)

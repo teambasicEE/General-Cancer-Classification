@@ -39,11 +39,10 @@ Test    217  2463  4836   958     8474
 ```
 - gastric
 ```angular2html
-            BN    WD     MD    PD     SUM
-Dataset                          
-train    27707  10196 14999  12046   64948
-valid     8398  2239  2370   2374    15381
-test      7955  1795  2458   3579    15787
+           BN     WD     MD     PD    SUM
+Train  171143  14193  20815  27642  233793
+Valid   33579   8854   9510   9467   61410
+Test    31720   7247   9892  14386   63245
 ```
 
 # Experiments & Tasks
