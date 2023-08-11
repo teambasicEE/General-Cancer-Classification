@@ -32,8 +32,8 @@ def train_single_task(network, config, organ):
         TrainDataloader = gastric_train_dataloader(batch_size=config.batch_size)
         ValidDataloader = gastric_valid_dataloader(batch_size=config.batch_size)
     else :
-        TrainDataloader = total_train_dataloader(batch_size = config.batch_szie)
-        ValidDataloader = total_valid_dataloader(batch_size = config.batch_szie)
+        TrainDataloader = total_train_dataloader(batch_size = config.batch_size)
+        ValidDataloader = total_valid_dataloader(batch_size = config.batch_size)
 
     criterion = torch.nn.CrossEntropyLoss()
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -129,8 +129,8 @@ def train_multi_task(network, config, mode):
         }
     )
 
-    TrainDataloader = total_train_dataloader(batch_size = config.batch_szie)
-    ValidDataloader = total_valid_dataloader(batch_size = config.batch_szie)
+    TrainDataloader = total_train_dataloader(batch_size = config.batch_size)
+    ValidDataloader = total_valid_dataloader(batch_size = config.batch_size)
 
     criterion = torch.nn.CrossEntropyLoss()
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')

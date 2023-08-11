@@ -19,7 +19,7 @@ def colon_train_test(network, config):
     for idx, i in enumerate(iter(TestDataloader)):
         img = i[0].to(device)
         label = i[1]
-        result.loc[idx] = [torch.argmax(network((img))).item(), label[0].item()]
+        result.loc[idx] = [torch.argmax(network(img)).item(), label.item()]
 
     base_path = 'C:\\Users\\User\\Desktop\\General-Cancer-Classification\\results\\'
 
