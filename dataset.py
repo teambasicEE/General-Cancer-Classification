@@ -206,15 +206,15 @@ def gastric_data_read():
     index2 = gastric_valid_label.loc[gastric_valid_label < 4].index
     index3 = gastric_test_label.loc[gastric_test_label < 4].index
 
-    gastric_train_dir = pd.Series(gastric_train_dir).loc[index1].reset_index().drop(columns='index')
-    gastric_valid_dir = pd.Series(gastric_valid_dir).loc[index2].reset_index().drop(columns='index')
-    gastric_test_dir = pd.Series(gastric_test_dir).loc[index3].reset_index().drop(columns='index')
+    train_dir = pd.Series(gastric_train_dir).loc[index1].reset_index().drop(columns='index')
+    valid_dir = pd.Series(gastric_valid_dir).loc[index2].reset_index().drop(columns='index')
+    test_dir = pd.Series(gastric_test_dir).loc[index3].reset_index().drop(columns='index')
 
-    gastric_train_label = gastric_train_label.loc[index1].reset_index().drop(columns='index')
-    gastric_valid_label = gastric_valid_label.loc[index2].reset_index().drop(columns='index')
-    gastric_test_label = gastric_test_label.loc[index3].reset_index().drop(columns='index')
+    train_label = gastric_train_label.loc[index1].reset_index().drop(columns='index')
+    valid_label = gastric_valid_label.loc[index2].reset_index().drop(columns='index')
+    test_label = gastric_test_label.loc[index3].reset_index().drop(columns='index')
 
-    return gastric_train_dir, gastric_train_label, gastric_valid_dir, gastric_valid_label, gastric_test_dir, gastric_test_label
+    return train_dir, train_label, valid_dir, valid_label, test_dir, test_label
 
 def gastric_train_dataloader(batch_size):
     train_dir, train_label, valid_dir, valid_label, test_dir, test_label = gastric_data_read()
