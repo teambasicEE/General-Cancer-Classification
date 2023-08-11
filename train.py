@@ -58,6 +58,7 @@ def train_single_task(network, config, organ):
         network.train()
         for img, labels, _ in (iter(TrainDataloader)):
             img, labels = torch.autograd.Variable(img), torch.autograd.Variable(labels)
+            labels = labels.type(torch.LongTensor)
             img, labels = img.to(device), labels.to(device)
 
             optimizer.zero_grad()
@@ -79,6 +80,7 @@ def train_single_task(network, config, organ):
         network.eval()
         for img, labels, _ in iter(ValidDataloader):
             img, labels = torch.autograd.Variable(img), torch.autograd.Variable(labels)
+            labels = labels.type(torch.LongTensor)
             img, labels = img.to(device), labels.to(device)
 
             with torch.no_grad():
@@ -170,6 +172,7 @@ def train_multi_task(network, config, mode):
         network.train()
         for img, labels, organ in (iter(TrainDataloader)):
             img, labels, organ = torch.autograd.Variable(img), torch.autograd.Variable(labels),torch.autograd.Variable(organ)
+            labels = labels.type(torch.LongTensor)
             img, labels, organ = img.to(device), labels.to(device), organ.to(device)
 
             optimizer.zero_grad()
@@ -201,6 +204,7 @@ def train_multi_task(network, config, mode):
         network.eval()
         for img, labels, organ in iter(ValidDataloader):
             img, labels, organ = torch.autograd.Variable(img), torch.autograd.Variable(labels), torch.autograd.Variable(organ)
+            labels = labels.type(torch.LongTensor)
             img, labels, organ = img.to(device), labels.to(device), organ.to(device)
 
             with torch.no_grad():
