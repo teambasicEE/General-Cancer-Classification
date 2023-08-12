@@ -23,16 +23,16 @@ def train_single_task(network, config, organ):
     )
 
     if organ == 'colon':
-        TrainDataloader = colon_train_dataloader(batch_size = config.batch_size)
+        TrainDataloader = colon_train_dataloader(batch_size = config.batch_size, tf= config.transform)
         ValidDataloader = colon_valid_dataloader(batch_size = config.batch_size)
     elif organ == 'prostate':
-        TrainDataloader = prostate_train_dataloader(batch_size=config.batch_size)
+        TrainDataloader = prostate_train_dataloader(batch_size=config.batch_size, tf= config.transform)
         ValidDataloader = prostate_valid_dataloader(batch_size=config.batch_size)
     elif organ == 'gastric' :
-        TrainDataloader = gastric_train_dataloader(batch_size=config.batch_size)
+        TrainDataloader = gastric_train_dataloader(batch_size=config.batch_size, tf= config.transform)
         ValidDataloader = gastric_valid_dataloader(batch_size=config.batch_size)
     else :
-        TrainDataloader = total_train_dataloader(batch_size = config.batch_size)
+        TrainDataloader = total_train_dataloader(batch_size = config.batch_size, tf= config.transform)
         ValidDataloader = total_valid_dataloader(batch_size = config.batch_size)
 
     criterion = torch.nn.CrossEntropyLoss()

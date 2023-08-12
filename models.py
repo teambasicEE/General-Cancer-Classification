@@ -93,5 +93,5 @@ DANN_model = nn.DataParallel(dann_network)
 
 # Use Mixstyle for gradient generalization
 
-class MixStyleModel(nn.Module):
+# class MixStyleModel(nn.Module):
   # or def function to modify efficientnet childrens
