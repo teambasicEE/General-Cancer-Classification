@@ -62,7 +62,6 @@ class CustomImageDataset(torch.utils.data.Dataset):
             self.img_dir = dir
             self.organs = organ
             self.transform = tr_tf
-            print('apply low-transform')
 
 
         elif mode == 'valid':
@@ -96,7 +95,6 @@ class HighTfImageDataset(torch.utils.data.Dataset):
             self.img_dir = dir
             self.organs = organ
             self.transform = high_tf
-            print('apply high transform')
 
 
         elif mode == 'valid':
