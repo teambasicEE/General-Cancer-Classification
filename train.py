@@ -102,13 +102,13 @@ def train_single_task(network, config, organ):
         print(
             f'\n epoch : {epoch + 1} -- train_loss : {loss[-1]: .5f}, train_acc : {acc[-1]: .5f} valid_loss = {valid_loss[-1]:.5f}, valid_acc = {valid_acc[-1]: .5f}')
 
-    train_result = pd.DataFrame({'train_loss': loss, 'train_acc': acc, 'valid_loss': valid_loss,
-                                     'valid_acc': valid_acc})
+    train_result = pd.DataFrame({'train_loss': loss.detach().cpu().numpy(), 'train_acc': acc.detach().cpu().numpy(), 'valid_loss': valid_loss.detach().cpu().numpy(), 'valid_acc': valid_acc.detach().cpu().numpy()})
     train_result.to_csv(base_path + f'{organ}_process.csv', index=False)
 
     print('-' * 30)
     print('-' * 30)
     print('Train End')
+
     torch.save(network, base_path + f'{organ}.pt')
 
     return network
@@ -237,8 +237,8 @@ def train_multi_task(network, config, mode):
         print(
             f'\n epoch : {epoch + 1} -- train_loss : {loss[-1]: .5f}, train_acc : {acc[-1]: .5f} valid_loss = {valid_loss[-1]:.5f}, valid_acc = {valid_acc[-1]: .5f}')
 
-    train_result = pd.DataFrame({'train_loss': loss, 'train_acc': acc, 'train_organ_loss' : organ_loss, 'train_organ_acc' : organ_acc, 'train_whole_loss' : whole_loss, 'valid_loss' :  valid_loss,
-                                     'valid_acc': valid_acc,'valid_organ_loss' : valid_organ_loss, 'valid_organ_acc' : valid_organ_acc, 'valid_whole_loss' : valid_whole_loss})
+    train_result = pd.DataFrame({'train_loss': loss.detach().cpu().numpy(), 'train_acc': acc.detach().cpu().numpy(), 'train_organ_loss' : organ_loss.detach().cpu().numpy(), 'train_organ_acc' : organ_acc.detach().cpu().numpy(), 'train_whole_loss' : whole_loss.detach().cpu().numpy(), 'valid_loss' :  valid_loss.detach().cpu().numpy(),
+                                     'valid_acc': valid_acc.detach().cpu().numpy(),'valid_organ_loss' : valid_organ_loss.detach().cpu().numpy(), 'valid_organ_acc' : valid_organ_acc.detach().cpu().numpy(), 'valid_whole_loss' : valid_whole_loss.detach().cpu().numpy()})
     if mode == 'dann':
         train_result.to_csv(base_path + f'dann_process.csv', index=False)
     else : train_result.to_csv(base_path + f'multi_task_process.csv', index=False)
