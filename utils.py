@@ -10,7 +10,7 @@ def Config():
 
     parser.add_argument('--epochs', '-e', type=int, default=30)
     parser.add_argument('--lr', type=float, default=0.001)
-    parser.add_argument('--batch_size', '-b', type=int, default=32)
+    parser.add_argument('--batch_size', '-b', type=int, default=40)
     parser.add_argument('--transform', '-tf', default = 'low')
 
     config = parser.parse_args()
