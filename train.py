@@ -74,8 +74,8 @@ def train_single_task(network, config, organ):
             temp_lr = scheduler.get_last_lr()
             wandb.log({'train_batch_acc': batch_acc[-1], 'train_batch_loss': batch_loss[-1], 'lr': temp_lr[0]})
 
-        loss.append(sum(batch_loss[-len(TrainDataloader):]) / len(TrainDataloader))
-        acc.append(sum(batch_acc[-len(TrainDataloader):]) / len(TrainDataloader))
+        loss.append((sum(batch_loss[-len(TrainDataloader):]) / len(TrainDataloader)).cpu())
+        acc.append((sum(batch_acc[-len(TrainDataloader):]) / len(TrainDataloader)).cpu())
         wandb.log({'train_acc' : acc[-1], 'train_loss' : loss[-1]})
 
         network.eval()
@@ -91,8 +91,8 @@ def train_single_task(network, config, organ):
                 batch_loss.append(l.item())
                 batch_acc.append(sum(torch.max(output, 1)[1].to(device) == labels) / img.shape[0])
 
-        valid_loss.append(sum(batch_loss[-len(ValidDataloader):]) / len(ValidDataloader))
-        valid_acc.append(sum(batch_acc[-len(ValidDataloader):]) / len(ValidDataloader))
+        valid_loss.append((sum(batch_loss[-len(ValidDataloader):]) / len(ValidDataloader)).cpu())
+        valid_acc.append((sum(batch_acc[-len(ValidDataloader):]) / len(ValidDataloader)).cpu())
         wandb.log({'valid_acc' : valid_acc[-1], 'valid_loss' : valid_loss[-1]})
 
         if best_acc >= valid_acc[-1]:
@@ -103,14 +103,14 @@ def train_single_task(network, config, organ):
         print(
             f'\n epoch : {epoch + 1} -- train_loss : {loss[-1]: .5f}, train_acc : {acc[-1]: .5f} valid_loss = {valid_loss[-1]:.5f}, valid_acc = {valid_acc[-1]: .5f}')
 
-    train_result = pd.DataFrame({'train_loss': loss.detach().cpu().numpy(), 'train_acc': acc.detach().cpu().numpy(), 'valid_loss': valid_loss.detach().cpu().numpy(), 'valid_acc': valid_acc.detach().cpu().numpy()})
+    torch.save(network, base_path + f'{organ}_{config.lr}_{config.transform}.pt')
+    train_result = pd.DataFrame({'train_loss': loss, 'train_acc': acc, 'valid_loss': valid_loss, 'valid_acc': valid_acc})
     train_result.to_csv(base_path + f'{organ}_process.csv', index=False)
 
     print('-' * 30)
     print('-' * 30)
     print('Train End')
 
-    torch.save(network, base_path + f'{organ}.pt')
 
     return network
 
@@ -195,11 +195,11 @@ def train_multi_task(network, config, mode):
 
             batch_total_loss.append(total_loss.item())
 
-        loss.append(sum(batch_loss[-len(TrainDataloader):]) / len(TrainDataloader))
-        acc.append(sum(batch_acc[-len(TrainDataloader):]) / len(TrainDataloader))
-        organ_loss.append(sum(batch_organ_loss[-len(TrainDataloader):]) / len(TrainDataloader))
-        organ_acc.append(sum(batch_organ_acc[-len(TrainDataloader):]) / len(TrainDataloader))
-        whole_loss.append(sum(batch_total_loss[-len(TrainDataloader):]) / len(TrainDataloader))
+        loss.append((sum(batch_loss[-len(TrainDataloader):]) / len(TrainDataloader)).cpu())
+        acc.append((sum(batch_acc[-len(TrainDataloader):]) / len(TrainDataloader)).cpu())
+        organ_loss.append((sum(batch_organ_loss[-len(TrainDataloader):]) / len(TrainDataloader)).cpu())
+        organ_acc.append((sum(batch_organ_acc[-len(TrainDataloader):]) / len(TrainDataloader).cpu()))
+        whole_loss.append((sum(batch_total_loss[-len(TrainDataloader):]) / len(TrainDataloader)).cpu())
         wandb.log({'train_cancer_acc' : acc[-1], 'train_cancer_loss' : loss[-1],'train_organ_acc' : organ_acc[-1], 'train_organ_loss' :organ_loss[-1],'train_whole_loss' : whole_loss[-1] })
 
         network.eval()
@@ -222,11 +222,11 @@ def train_multi_task(network, config, mode):
 
                 batch_total_loss.append(total_loss.item())
 
-        valid_loss.append(sum(batch_loss[-len(ValidDataloader):]) / len(ValidDataloader))
-        valid_acc.append(sum(batch_acc[-len(ValidDataloader):]) / len(ValidDataloader))
-        valid_organ_loss.append(sum(batch_organ_loss[-len(ValidDataloader):]) / len(ValidDataloader))
-        valid_organ_acc.append(sum(batch_organ_acc[-len(ValidDataloader):]) / len(ValidDataloader))
-        valid_whole_loss.append(sum(batch_total_loss[-len(ValidDataloader):]) / len(ValidDataloader))
+        valid_loss.append((sum(batch_loss[-len(ValidDataloader):]) / len(ValidDataloader)).cpu())
+        valid_acc.append((sum(batch_acc[-len(ValidDataloader):]) / len(ValidDataloader)).cpu())
+        valid_organ_loss.append((sum(batch_organ_loss[-len(ValidDataloader):]) / len(ValidDataloader)).cpu())
+        valid_organ_acc.append((sum(batch_organ_acc[-len(ValidDataloader):]) / len(ValidDataloader)).cpu())
+        valid_whole_loss.append((sum(batch_total_loss[-len(ValidDataloader):]) / len(ValidDataloader)).cpu())
         wandb.log({'valid_cancer_acc' : acc[-1], 'valid_cancer_loss' : loss[-1],'valid_organ_acc' : valid_organ_acc[-1], 'valid_organ_loss' :valid_organ_loss[-1],'valid_whole_loss' : valid_whole_loss[-1] })
 
         if best_acc >= valid_acc[-1]:
@@ -238,8 +238,13 @@ def train_multi_task(network, config, mode):
         print(
             f'\n epoch : {epoch + 1} -- train_loss : {loss[-1]: .5f}, train_acc : {acc[-1]: .5f} valid_loss = {valid_loss[-1]:.5f}, valid_acc = {valid_acc[-1]: .5f}')
 
-    train_result = pd.DataFrame({'train_loss': loss.detach().cpu().numpy(), 'train_acc': acc.detach().cpu().numpy(), 'train_organ_loss' : organ_loss.detach().cpu().numpy(), 'train_organ_acc' : organ_acc.detach().cpu().numpy(), 'train_whole_loss' : whole_loss.detach().cpu().numpy(), 'valid_loss' :  valid_loss.detach().cpu().numpy(),
-                                     'valid_acc': valid_acc.detach().cpu().numpy(),'valid_organ_loss' : valid_organ_loss.detach().cpu().numpy(), 'valid_organ_acc' : valid_organ_acc.detach().cpu().numpy(), 'valid_whole_loss' : valid_whole_loss.detach().cpu().numpy()})
+    if mode == 'dann':
+        torch.save(network, base_path + f'dann_task_{config.lr}_{config.transform}.pt')
+    else :
+        torch.save(network, base_path + f'multi_task_{config.lr}_{config.transform}.pt')
+
+    train_result = pd.DataFrame({'train_loss': loss, 'train_acc': acc, 'train_organ_loss' : organ_loss, 'train_organ_acc' : organ_acc, 'train_whole_loss' : whole_loss, 'valid_loss' :  valid_loss,
+                                     'valid_acc': valid_acc,'valid_organ_loss' : valid_organ_loss, 'valid_organ_acc' : valid_organ_acc, 'valid_whole_loss' : valid_whole_loss})
     if mode == 'dann':
         train_result.to_csv(base_path + f'dann_process.csv', index=False)
     else : train_result.to_csv(base_path + f'multi_task_process.csv', index=False)
@@ -247,9 +252,5 @@ def train_multi_task(network, config, mode):
     print('-' * 30)
     print('-' * 30)
     print('Train End')
-    if mode == 'dann':
-        torch.save(network, base_path + f'dann_task.pt')
-    else :
-        torch.save(network, base_path + f'multi_task.pt')
 
     return network
