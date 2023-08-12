@@ -126,6 +126,39 @@ infer
 ```
 ```
 python gastric.py --epochs 30 --lr 0.001 --batch_size 40
+
+------------------------------
+Accuracy : 0.795
+
+Recall for Benign : 0.948
+Precision for Benign : 0.944
+f1-score for Benign : 0.473
+
+Recall for WD : 0.784
+Precision for WD : 0.801
+f1-score for WD : 0.396
+
+Recall for MD : 0.487
+Precision for MD : 0.579
+f1-score for MD : 0.265
+
+Recall for PD : 0.840
+Precision for PD : 0.743
+f1-score for PD : 0.394
+
+Recall for Cancer : 0.973
+Precision for Cancer : 0.975
+f1-score for Cancer : 0.487
+
+------------------------------
+Confusion Matrix :
+label    0.0   1.0   2.0   3.0
+infer
+0.0    10721   133   219   282
+1.0      466  6213   959   122
+2.0       97  1214  3250  1049
+3.0       20   367  2239  7607
+
 ```
 - Total-organ Model
 ```
