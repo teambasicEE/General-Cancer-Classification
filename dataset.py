@@ -8,6 +8,7 @@ from albumentations.pytorch import ToTensorV2
 from torchvision import transforms
 import random
 from PIL import ImageFilter
+from PIL import Image
 
 tr_tf = A.Compose([
     A.Resize(512, 512),
@@ -61,6 +62,7 @@ class CustomImageDataset(torch.utils.data.Dataset):
             self.img_dir = dir
             self.organs = organ
             self.transform = tr_tf
+            print('apply low-transform')
 
 
         elif mode == 'valid':
@@ -74,7 +76,7 @@ class CustomImageDataset(torch.utils.data.Dataset):
             self.img_dir = dir
             self.transform = ts_tf
             self.organs = organ
-        print('apply low-transform')
+
     def __len__(self):
         return len(self.img_labels)
 
@@ -94,6 +96,7 @@ class HighTfImageDataset(torch.utils.data.Dataset):
             self.img_dir = dir
             self.organs = organ
             self.transform = high_tf
+            print('apply high transform')
 
 
         elif mode == 'valid':
@@ -107,16 +110,15 @@ class HighTfImageDataset(torch.utils.data.Dataset):
             self.img_dir = dir
             self.transform = ts_tf
             self.organs = organ
-        print('apply high transform')
+
     def __len__(self):
         return len(self.img_labels)
 
     def __getitem__(self, idx):
-        image = cv2.cvtColor(cv2.imread(self.img_dir.iloc[idx]), cv2.COLOR_BGR2RGB)
+        image = Image.open(self.img_dir.iloc[idx])
         label = self.img_labels.iloc[idx]
         organ = self.organs.iloc[idx]
-        transformed = self.transform(image=image)
-        image = transformed['image']
+        image = self.transform(image)
         return image, label, organ
 
 
@@ -153,8 +155,7 @@ def colon_data_read():
     colon_test_label = [file_to_label(i) for i in colon_test_dir]
 
     return pd.Series(colon_train_dir), pd.Series(colon_train_label), pd.Series(colon_valid_dir), pd.Series(
-        colon_valid_label), pd.Series(colon_test_dir), pd.Series(colon_test_label
-                                                                 )
+        colon_valid_label), pd.Series(colon_test_dir), pd.Series(colon_test_label)
 
 
 def colon_train_dataloader(batch_size, tf):
