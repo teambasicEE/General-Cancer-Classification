@@ -124,6 +124,11 @@ infer
 3       48   471  1508  549
 
 ```
+- low performance -> apply high aug
+```angular2html
+python prostate.py --epochs 30 --lr 0.001 --batch_size 40 -tf high
+
+```
 ```
 python gastric.py --epochs 30 --lr 0.001 --batch_size 40
 

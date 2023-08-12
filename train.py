@@ -16,6 +16,7 @@ def train_single_task(network, config, organ):
             'lr': config.lr,
             'model': 'EfficientnetB0',
             'dataset': organ,
+            'transform' : config.transform,
             'epochs': config.epochs,
             'batch_size': config.batch_size,
             'task' : 'single'

@@ -12,9 +12,8 @@ from models import single_task_model
 
 def prostate_train_test(network, config):
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-    # network = train_single_task(network, config, 'prostate')
+    network = train_single_task(network, config, 'prostate')
 
-    network = torch.load('C:\\Users\\User\\Desktop\\General-Cancer-Classification\\results\\prostate_epoch_30_batch_42_0.001_best_acc.pt')
     result = pd.DataFrame(columns=['infer', 'label'])
     network.to(device)
     TestDataloader = prostate_test_dataloader()
