@@ -94,6 +94,7 @@ def train_single_task(network, config, organ):
         valid_loss.append((sum(batch_loss[-len(ValidDataloader):]) / len(ValidDataloader)))
         valid_acc.append((sum(batch_acc[-len(ValidDataloader):]) / len(ValidDataloader)))
         wandb.log({'valid_acc' : valid_acc[-1], 'valid_loss' : valid_loss[-1]})
+        torch.save(network, base_path + f'{organ}_{config.lr}_{config.transform}.pt')
 
         if best_acc >= valid_acc[-1]:
             best_loss = valid_loss[-1]
@@ -103,9 +104,7 @@ def train_single_task(network, config, organ):
         print(
             f'\n epoch : {epoch + 1} -- train_loss : {loss[-1]: .5f}, train_acc : {acc[-1]: .5f} valid_loss = {valid_loss[-1]:.5f}, valid_acc = {valid_acc[-1]: .5f}')
 
-    torch.save(network, base_path + f'{organ}_{config.lr}_{config.transform}.pt')
-    # train_result = pd.DataFrame({'train_loss': loss, 'train_acc': acc, 'valid_loss': valid_loss, 'valid_acc': valid_acc})
-    # train_result.to_csv(base_path + f'{organ}_process.csv', index=False)
+
 
     print('-' * 30)
     print('-' * 30)
@@ -229,6 +228,11 @@ def train_multi_task(network, config, mode):
         valid_whole_loss.append((sum(batch_total_loss[-len(ValidDataloader):]) / len(ValidDataloader)))
         wandb.log({'valid_cancer_acc' : acc[-1], 'valid_cancer_loss' : loss[-1],'valid_organ_acc' : valid_organ_acc[-1], 'valid_organ_loss' :valid_organ_loss[-1],'valid_whole_loss' : valid_whole_loss[-1] })
 
+        if mode == 'dann':
+            torch.save(network, base_path + f'dann_task_{config.lr}_{config.transform}.pt')
+        else:
+            torch.save(network, base_path + f'multi_task_{config.lr}_{config.transform}.pt')
+
         if best_acc >= valid_acc[-1]:
             best_acc = valid_acc[-1]
             if mode == 'dann':
@@ -238,16 +242,8 @@ def train_multi_task(network, config, mode):
         print(
             f'\n epoch : {epoch + 1} -- train_loss : {loss[-1]: .5f}, train_acc : {acc[-1]: .5f} valid_loss = {valid_loss[-1]:.5f}, valid_acc = {valid_acc[-1]: .5f}')
 
-    if mode == 'dann':
-        torch.save(network, base_path + f'dann_task_{config.lr}_{config.transform}.pt')
-    else :
-        torch.save(network, base_path + f'multi_task_{config.lr}_{config.transform}.pt')
 
-    # train_result = pd.DataFrame({'train_loss': loss, 'train_acc': acc, 'train_organ_loss' : organ_loss, 'train_organ_acc' : organ_acc, 'train_whole_loss' : whole_loss, 'valid_loss' :  valid_loss,
-    #                                  'valid_acc': valid_acc,'valid_organ_loss' : valid_organ_loss, 'valid_organ_acc' : valid_organ_acc, 'valid_whole_loss' : valid_whole_loss})
-    # if mode == 'dann':
-    #     train_result.to_csv(base_path + f'dann_process.csv', index=False)
-    # else : train_result.to_csv(base_path + f'multi_task_process.csv', index=False)
+
 
     print('-' * 30)
     print('-' * 30)
