@@ -178,9 +178,9 @@ def train_multi_task(network, config, mode):
             optimizer.zero_grad()
             output = network(img)
             class_loss = criterion(output[0], labels)
-            organ_loss = criterion(output[1], organ)
+            domain_loss = criterion(output[1], organ)
 
-            total_loss = class_loss + organ_loss
+            total_loss = class_loss + domain_loss
             total_loss.backward()
 
             optimizer.step()
@@ -189,7 +189,7 @@ def train_multi_task(network, config, mode):
             batch_loss.append(class_loss.item())
             batch_acc.append(sum(torch.max(output[0], dim=1)[1].to(device) == labels) / img.shape[0])
 
-            batch_organ_loss.append(organ_loss.item())
+            batch_organ_loss.append(domain_loss.item())
             batch_organ_acc.append(sum(torch.max(output[1], dim=1)[1].to(device) == organ) / img.shape[0])
 
             batch_total_loss.append(total_loss.item())
@@ -210,13 +210,13 @@ def train_multi_task(network, config, mode):
             with torch.no_grad():
                 output = network(img)
                 class_loss = criterion(output[0], labels)
-                organ_loss = criterion(output[1], organ)
-                whole_loss = class_loss + organ_loss
+                domain_loss = criterion(output[1], organ)
+                whole_loss = class_loss + domain_loss
 
                 batch_loss.append(class_loss.item())
                 batch_acc.append(sum(torch.max(output[0], dim=1)[1].to(device) == labels) / img.shape[0])
 
-                batch_organ_loss.append(organ_loss.item())
+                batch_organ_loss.append(domain_loss.item())
                 batch_organ_acc.append(sum(torch.max(output[1], dim=1)[1].to(device) == organ) / img.shape[0])
 
                 batch_total_loss.append(total_loss.item())
