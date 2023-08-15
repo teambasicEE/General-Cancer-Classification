@@ -8,7 +8,7 @@ from models import multi_task_model
 
 def multi_task_train_test(network, config):
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-    network = train_multi_task(network, config)
+    network = train_multi_task(network, config, 'mutli_task')
 
     result = pd.DataFrame(columns=['infer', 'label', 'infer_organ', 'organ'])
     network.to(device)
