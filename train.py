@@ -211,7 +211,7 @@ def train_multi_task(network, config, mode):
                 output = network(img)
                 class_loss = criterion(output[0], labels)
                 domain_loss = criterion(output[1], organ)
-                whole_loss = class_loss + domain_loss
+                total_loss = class_loss + domain_loss
 
                 batch_loss.append(class_loss.item())
                 batch_acc.append(sum(torch.max(output[0], dim=1)[1].to(device) == labels) / img.shape[0])
