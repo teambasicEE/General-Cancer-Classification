@@ -226,7 +226,7 @@ def train_multi_task(network, config, mode):
         valid_organ_loss.append((sum(batch_organ_loss[-len(ValidDataloader):]) / len(ValidDataloader)))
         valid_organ_acc.append((sum(batch_organ_acc[-len(ValidDataloader):]) / len(ValidDataloader)))
         valid_whole_loss.append((sum(batch_total_loss[-len(ValidDataloader):]) / len(ValidDataloader)))
-        wandb.log({'valid_cancer_acc' : acc[-1], 'valid_cancer_loss' : loss[-1],'valid_organ_acc' : valid_organ_acc[-1], 'valid_organ_loss' :valid_organ_loss[-1],'valid_whole_loss' : valid_whole_loss[-1] })
+        wandb.log({'valid_cancer_acc' : valid_acc[-1], 'valid_cancer_loss' : valid_loss[-1],'valid_organ_acc' : valid_organ_acc[-1], 'valid_organ_loss' :valid_organ_loss[-1],'valid_whole_loss' : valid_whole_loss[-1] })
 
         if mode == 'dann':
             torch.save(network, base_path + f'dann_task_{config.lr}_{config.transform}.pt')
@@ -241,6 +241,7 @@ def train_multi_task(network, config, mode):
 
         print(
             f'\n epoch : {epoch + 1} -- train_loss : {loss[-1]: .5f}, train_acc : {acc[-1]: .5f} valid_loss = {valid_loss[-1]:.5f}, valid_acc = {valid_acc[-1]: .5f}')
+        print(f'\t \t organ_acc : {organ_acc[-1]} organ_loss : {organ_loss[-1]} valid_organ_acc : {valid_organ_acc[-1]} valid_organ_loss : {valid_organ_loss[-1]}')
 
 
 
