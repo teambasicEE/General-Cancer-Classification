@@ -124,11 +124,78 @@ infer
 3       48   471  1508  549
 
 ```
-- low performance -> apply high aug
+- low performance -> apply high aug and small lr
 ```angular2html
 python prostate.py --epochs 30 --lr 0.001 --batch_size 40 -tf high
 
+------------------------------
+Accuracy : 0.599
+
+Recall for Benign : 0.616
+Precision for Benign : 0.965
+f1-score for Benign : 0.376
+
+Recall for WD : 0.712
+Precision for WD : 0.657
+f1-score for WD : 0.342
+
+Recall for MD : 0.417
+Precision for MD : 0.585
+f1-score for MD : 0.244
+
+Recall for PD : 0.787
+Precision for PD : 0.420
+f1-score for PD : 0.274
+
+Recall for Cancer : 0.997
+Precision for Cancer : 0.950
+f1-score for Cancer : 0.486
+
+------------------------------
+Confusion Matrix :
+label    0     1    2    3
+infer
+0      386    10    4    0
+1      175  1347  479   49
+2       36   443  825  106
+3       30    92  669  572
+
 ```
+
+```
+python prostate.py --epochs 30 --lr 0.0005 --batch_size 40 -tf high
+Accuracy : 0.610
+
+Recall for Benign : 0.689
+Precision for Benign : 0.971
+f1-score for Benign : 0.403
+
+Recall for WD : 0.635
+Precision for WD : 0.668
+f1-score for WD : 0.326
+
+Recall for MD : 0.506
+Precision for MD : 0.563
+f1-score for MD : 0.267
+
+Recall for PD : 0.757
+Precision for PD : 0.457
+f1-score for PD : 0.285
+
+Recall for Cancer : 0.997
+Precision for Cancer : 0.959
+f1-score for Cancer : 0.489
+
+------------------------------
+Confusion Matrix :
+label    0     1     2    3
+infer
+0      432    11     2    0
+1      136  1202   378   83
+2       46   635  1000   94
+3       13    44   597  550
+```
+
 ```
 python gastric.py --epochs 30 --lr 0.001 --batch_size 40
 
@@ -168,6 +235,37 @@ infer
 - Total-organ Model
 ```
 python total_organ.py --epochs 30 --lr 0.001 --batch_size 40
+
+------------------------------
+Accuracy : 0.825
+
+Recall for Benign : 0.974
+Precision for Benign : 0.958
+f1-score for Benign : 0.483
+
+Recall for WD : 0.557
+Precision for WD : 0.745
+f1-score for WD : 0.319
+
+Recall for MD : 0.862
+Precision for MD : 0.753
+f1-score for MD : 0.402
+
+Recall for PD : 0.782
+Precision for PD : 0.842
+f1-score for PD : 0.405
+
+Recall for Cancer : 0.984
+Precision for Cancer : 0.990
+f1-score for Cancer : 0.494
+
+------------------------------
+Confusion Matrix :
+label    0.0   1.0    2.0    3.0
+infer
+0.0    18172   318    248    234
+1.0      408  6580   1471    377
+2.0       60  4723  21336   2210
 ```
 - Multi-task Model
 ```

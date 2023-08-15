@@ -131,7 +131,7 @@ def train_multi_task(network, config, mode):
         }
     )
 
-    TrainDataloader = total_train_dataloader(batch_size = config.batch_size)
+    TrainDataloader = total_train_dataloader(batch_size = config.batch_size, tf = config.transform)
     ValidDataloader = total_valid_dataloader(batch_size = config.batch_size)
 
     criterion = torch.nn.CrossEntropyLoss()
