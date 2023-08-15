@@ -266,6 +266,110 @@ infer
 0.0    18172   318    248    234
 1.0      408  6580   1471    377
 2.0       60  4723  21336   2210
+
+
+# more anaylsis
+
+## for organ(0) : colon
+------------------------------
+Accuracy : 0.855
+
+Recall for Benign : 0.999
+Precision for Benign : 0.996
+f1-score for Benign : 0.499
+
+Recall for WD : 0.042
+Precision for WD : 0.167
+f1-score for WD : 0.034
+
+Recall for MD : 0.969
+Precision for MD : 0.817
+f1-score for MD : 0.443
+
+Recall for PD : 0.475
+Precision for PD : 0.931
+f1-score for PD : 0.315
+
+Recall for Cancer : 0.999
+Precision for Cancer : 1.000
+f1-score for Cancer : 0.500
+
+------------------------------
+Confusion Matrix : 
+label   0.0   1.0    2.0   3.0
+infer                         
+0.0    6713     0     21     3
+1.0       2    84    362    55
+2.0       6  1900  15620  1599
+3.0       0     2    110  1500
+
+## for organ(1) : prostate
+------------------------------
+Accuracy : 0.756
+
+Recall for Benign : 0.928
+Precision for Benign : 0.922
+f1-score for Benign : 0.463
+
+Recall for WD : 0.668
+Precision for WD : 0.794
+f1-score for WD : 0.363
+
+Recall for MD : 0.789
+Precision for MD : 0.666
+f1-score for MD : 0.361
+
+Recall for PD : 0.746
+Precision for PD : 0.821
+f1-score for PD : 0.391
+
+Recall for Cancer : 0.989
+Precision for Cancer : 0.990
+f1-score for Cancer : 0.495
+
+------------------------------
+Confusion Matrix : 
+label  0.0   1.0   2.0  3.0
+infer                      
+0.0    582    31    12    6
+1.0     26  1264   291   10
+2.0     19   593  1560  169
+3.0      0     4   114  542
+
+## for organ(2) : gastric
+------------------------------
+Accuracy : 0.811
+
+Recall for Benign : 0.962
+Precision for Benign : 0.937
+f1-score for Benign : 0.475
+
+Recall for WD : 0.660
+Precision for WD : 0.776
+f1-score for WD : 0.357
+
+Recall for MD : 0.623
+Precision for MD : 0.606
+f1-score for MD : 0.307
+
+Recall for PD : 0.892
+Precision for PD : 0.829
+f1-score for PD : 0.430
+
+Recall for Cancer : 0.969
+Precision for Cancer : 0.982
+f1-score for Cancer : 0.488
+
+------------------------------
+Confusion Matrix : 
+label    0.0   1.0   2.0   3.0
+infer                         
+0.0    10877   287   215   225
+1.0      380  5232   818   312
+2.0       35  2230  4156   442
+3.0       12   178  1478  8081
+
+
 ```
 - Multi-task Model
 ```
