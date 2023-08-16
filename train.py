@@ -241,7 +241,7 @@ def train_multi_task(network, config, mode):
 
         print(
             f'\n epoch : {epoch + 1} -- train_loss : {loss[-1]: .5f}, train_acc : {acc[-1]: .5f} valid_loss = {valid_loss[-1]:.5f}, valid_acc = {valid_acc[-1]: .5f}')
-        print(f'\t \t organ_acc : {organ_acc[-1]} organ_loss : {organ_loss[-1]} valid_organ_acc : {valid_organ_acc[-1]} valid_organ_loss : {valid_organ_loss[-1]}')
+        print(f'\t \t organ_acc : {organ_acc[-1]: .5f} organ_loss : {organ_loss[-1]: .5f} valid_organ_acc : {valid_organ_acc[-1]: .5f} valid_organ_loss : {valid_organ_loss[-1]: .5f}')
 
 
 
