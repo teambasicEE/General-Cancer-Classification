@@ -320,7 +320,7 @@ def train_pcgrad(network, config):
             domain_loss = criterion(output[1], organ)
 
             losses = [class_loss, domain_loss]
-            total_loss.pc_backward(losses)
+            optimizer.pc_backward(losses)
 
             optimizer.step()
             # scheduler.step()
