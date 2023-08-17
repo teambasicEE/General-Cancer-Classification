@@ -280,7 +280,7 @@ def train_pcgrad(network, config):
     lr = config.lr
     batch_size = config.batch_size
     optimizer = PCGrad(torch.optim.Adam(network.parameters(), lr=lr))
-    scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, len(TrainDataloader)//5, 0.0001)
+    # scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, len(TrainDataloader)//5, 0.0001)
 
     network.to(device)
     loss = []
@@ -323,7 +323,7 @@ def train_pcgrad(network, config):
             total_loss.pc_backward(losses)
 
             optimizer.step()
-            scheduler.step()
+            # scheduler.step()
 
             with torch.no_grad():
                 total_loss = class_loss + domain_loss
