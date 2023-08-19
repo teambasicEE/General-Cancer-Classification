@@ -12,6 +12,7 @@ def Config():
     parser.add_argument('--lr', type=float, default=0.001)
     parser.add_argument('--batch_size', '-b', type=int, default=40)
     parser.add_argument('--transform', '-tf', default = 'low')
+    parser.add_argument('--sample', '-sp', action = 'store_true')
 
     config = parser.parse_args()
     return config

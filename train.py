@@ -19,21 +19,27 @@ def train_single_task(network, config, organ):
             'transform' : config.transform,
             'epochs': config.epochs,
             'batch_size': config.batch_size,
-            'task' : 'single'
+            'task' : 'single',
+            'sample' : config.sample
         }
     )
 
+    if config.sample :
+        sampled = 'True'
+    else :
+        sampled = 'False'
+
     if organ == 'colon':
-        TrainDataloader = colon_train_dataloader(batch_size = config.batch_size, tf= config.transform)
+        TrainDataloader = colon_train_dataloader(batch_size = config.batch_size, tf= config.transform, sample = config.sample)
         ValidDataloader = colon_valid_dataloader(batch_size = config.batch_size)
     elif organ == 'prostate':
         TrainDataloader = prostate_train_dataloader(batch_size=config.batch_size, tf= config.transform)
         ValidDataloader = prostate_valid_dataloader(batch_size=config.batch_size)
     elif organ == 'gastric' :
-        TrainDataloader = gastric_train_dataloader(batch_size=config.batch_size, tf= config.transform)
+        TrainDataloader = gastric_train_dataloader(batch_size=config.batch_size, tf= config.transform, sample = config.sample)
         ValidDataloader = gastric_valid_dataloader(batch_size=config.batch_size)
     else :
-        TrainDataloader = total_train_dataloader(batch_size = config.batch_size, tf= config.transform)
+        TrainDataloader = total_train_dataloader(batch_size = config.batch_size, tf= config.transform, sample = config.sample)
         ValidDataloader = total_valid_dataloader(batch_size = config.batch_size)
 
     criterion = torch.nn.CrossEntropyLoss()
@@ -94,12 +100,12 @@ def train_single_task(network, config, organ):
         valid_loss.append((sum(batch_loss[-len(ValidDataloader):]) / len(ValidDataloader)))
         valid_acc.append((sum(batch_acc[-len(ValidDataloader):]) / len(ValidDataloader)))
         wandb.log({'valid_acc' : valid_acc[-1], 'valid_loss' : valid_loss[-1]})
-        torch.save(network, base_path + f'{organ}_{config.lr}_{config.transform}.pt')
+        torch.save(network, base_path + f'{organ}_{config.lr}_{config.transform}_{sampled}.pt')
 
         if best_acc >= valid_acc[-1]:
             best_loss = valid_loss[-1]
             best_acc = valid_acc[-1]
-            torch.save(network, base_path + f'{organ}_epoch_{epochs}_batch_{batch_size}_{lr}_best_acc.pt')
+            torch.save(network, base_path + f'{organ}_epoch_{epochs}_batch_{batch_size}_{lr}_sample_{sampled}_best_acc.pt')
 
         print(
             f'\n epoch : {epoch + 1} -- train_loss : {loss[-1]: .5f}, train_acc : {acc[-1]: .5f} valid_loss = {valid_loss[-1]:.5f}, valid_acc = {valid_acc[-1]: .5f}')
@@ -127,11 +133,17 @@ def train_multi_task(network, config, mode):
             'dataset': 'total',
             'epochs': config.epochs,
             'batch_size': config.batch_size,
-            'task' : 'dann' if mode == 'dann' else 'multi'
+            'task' : 'dann' if mode == 'dann' else 'multi',
+            'sample' : config.sample
         }
     )
 
-    TrainDataloader = total_train_dataloader(batch_size = config.batch_size, tf = config.transform)
+    if config.sample :
+        sampled = 'True'
+    else :
+        sampled = 'False'
+
+    TrainDataloader = total_train_dataloader(batch_size = config.batch_size, tf = config.transform, sample = config.sample)
     ValidDataloader = total_valid_dataloader(batch_size = config.batch_size)
 
     criterion = torch.nn.CrossEntropyLoss()
@@ -229,15 +241,15 @@ def train_multi_task(network, config, mode):
         wandb.log({'valid_cancer_acc' : valid_acc[-1], 'valid_cancer_loss' : valid_loss[-1],'valid_organ_acc' : valid_organ_acc[-1], 'valid_organ_loss' :valid_organ_loss[-1],'valid_whole_loss' : valid_whole_loss[-1] })
 
         if mode == 'dann':
-            torch.save(network, base_path + f'dann_task_{config.lr}_{config.transform}.pt')
+            torch.save(network, base_path + f'dann_task_{config.lr}_{config.transform}_{sampled}.pt')
         else:
-            torch.save(network, base_path + f'multi_task_{config.lr}_{config.transform}.pt')
+            torch.save(network, base_path + f'multi_task_{config.lr}_{config.transform}_{sampled}.pt')
 
         if best_acc >= valid_acc[-1]:
             best_acc = valid_acc[-1]
             if mode == 'dann':
-                torch.save(network, base_path + f'dann_epoch_{epochs}_batch_{batch_size}_{lr}_best_acc.pt')
-            else : torch.save(network, base_path + f'multi_class_epoch_{epochs}_batch_{batch_size}_{lr}_best_acc.pt')
+                torch.save(network, base_path + f'dann_epoch_{epochs}_batch_{batch_size}_{lr}_{sampled}_best_acc.pt')
+            else : torch.save(network, base_path + f'multi_class_epoch_{epochs}_batch_{batch_size}_{lr}_{sampled}_best_acc.pt')
 
         print(
             f'\n epoch : {epoch + 1} -- train_loss : {loss[-1]: .5f}, train_acc : {acc[-1]: .5f} valid_loss = {valid_loss[-1]:.5f}, valid_acc = {valid_acc[-1]: .5f}')
@@ -266,11 +278,17 @@ def train_pcgrad(network, config):
             'dataset': 'total',
             'epochs': config.epochs,
             'batch_size': config.batch_size,
-            'task' : 'dann with pcgrad'
+            'task' : 'dann with pcgrad',
+            'sample' : config.sample
         }
     )
 
-    TrainDataloader = total_train_dataloader(batch_size = config.batch_size, tf = config.transform)
+    if config.sample :
+        sampled = 'True'
+    else :
+        sampled = 'False'
+
+    TrainDataloader = total_train_dataloader(batch_size = config.batch_size, tf = config.transform, sample = config.sample)
     ValidDataloader = total_valid_dataloader(batch_size = config.batch_size)
 
     criterion = torch.nn.CrossEntropyLoss()
@@ -369,11 +387,11 @@ def train_pcgrad(network, config):
         valid_whole_loss.append((sum(batch_total_loss[-len(ValidDataloader):]) / len(ValidDataloader)))
         wandb.log({'valid_cancer_acc' : valid_acc[-1], 'valid_cancer_loss' : valid_loss[-1],'valid_organ_acc' : valid_organ_acc[-1], 'valid_organ_loss' :valid_organ_loss[-1],'valid_whole_loss' : valid_whole_loss[-1] })
 
-        torch.save(network, base_path + f'pcgrad_dann_task_{config.lr}_{config.transform}.pt')
+        torch.save(network, base_path + f'pcgrad_dann_task_{config.lr}_{config.transform}_{sampled}.pt')
 
         if best_acc >= valid_acc[-1]:
             best_acc = valid_acc[-1]
-            torch.save(network, base_path + f'pcgrad_dann_epoch_{epochs}_batch_{batch_size}_{lr}_best_acc.pt')
+            torch.save(network, base_path + f'pcgrad_dann_epoch_{epochs}_batch_{batch_size}_{lr}_{sampled}_best_acc.pt')
 
         print(
             f'\n epoch : {epoch + 1} -- train_loss : {loss[-1]: .5f}, train_acc : {acc[-1]: .5f} valid_loss = {valid_loss[-1]:.5f}, valid_acc = {valid_acc[-1]: .5f}')

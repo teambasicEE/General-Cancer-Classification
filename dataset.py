@@ -129,9 +129,13 @@ colon
 """
 
 
-def colon_data_read():
-    colon_path = 'C:\\Users\\User\\Desktop\\colon\\test_2\\colon_45WSIs_1144_08_step05_05\\'
-    colon_data_csv = pd.read_csv('C:\\Users\\User\\Desktop\\colon\\colon_split_dataset.csv')
+def colon_data_read(sample = False):
+    if sample :
+        colon_path = 'C:\\Users\\User\\Desktop\\colon\\test_2\\colon_45WSIs_1144_08_step05_05\\'
+        colon_data_csv = pd.read_csv('C:\\Users\\User\\Desktop\\colon\\colon_sp_data.csv')
+    else :
+        colon_path = 'C:\\Users\\User\\Desktop\\colon\\test_2\\colon_45WSIs_1144_08_step05_05\\'
+        colon_data_csv = pd.read_csv('C:\\Users\\User\\Desktop\\colon\\colon_split_dataset.csv')
 
     colon_train_folder = colon_data_csv[colon_data_csv['mode'] == 'train'].folder
     colon_valid_folder = colon_data_csv[colon_data_csv['mode'] == 'valid'].folder
@@ -156,8 +160,8 @@ def colon_data_read():
         colon_valid_label), pd.Series(colon_test_dir), pd.Series(colon_test_label)
 
 
-def colon_train_dataloader(batch_size, tf):
-    train_dir, train_label, valid_dir, valid_label, test_dir, test_label = colon_data_read()
+def colon_train_dataloader(batch_size, tf, sample = False):
+    train_dir, train_label, valid_dir, valid_label, test_dir, test_label = colon_data_read(sample)
     organ = pd.Series([0 for i in range(len(train_dir))])
     if tf == 'high':
         TrainDataset = HighTfImageDataset(mode='train', label=train_label, dir=train_dir, organ=organ)
@@ -168,16 +172,16 @@ def colon_train_dataloader(batch_size, tf):
     return TrainDataloader
 
 
-def colon_valid_dataloader(batch_size):
-    train_dir, train_label, valid_dir, valid_label, test_dir, test_label = colon_data_read()
+def colon_valid_dataloader(batch_size, sample = False):
+    train_dir, train_label, valid_dir, valid_label, test_dir, test_label = colon_data_read(sample)
     organ = pd.Series([0 for i in range(len(valid_dir))])
     ValidDataset = CustomImageDataset(mode='valid', label=valid_label, dir=valid_dir, organ=organ)
     ValidDataloader = torch.utils.data.DataLoader(ValidDataset, batch_size=batch_size, shuffle=False)
     return ValidDataloader
 
 
-def colon_test_dataloader():
-    train_dir, train_label, valid_dir, valid_label, test_dir, test_label = colon_data_read()
+def colon_test_dataloader(sample = False):
+    train_dir, train_label, valid_dir, valid_label, test_dir, test_label = colon_data_read(sample)
     organ = pd.Series([0 for i in range(len(test_dir))])
     TestDataset = CustomImageDataset(mode='test', label=test_label, dir=test_dir, organ=organ)
     TestDataloader = torch.utils.data.DataLoader(TestDataset, shuffle=False)
@@ -259,9 +263,12 @@ def prepare_gastric_data(data_label):
     return data_label
 
 
-def gastric_data_read():
+def gastric_data_read(sample = False):
     gastric_path = 'C:\\Users\\User\\Desktop\\gastric_data\\'
-    gastric_data_csv = pd.read_csv('C:\\Users\\User\\Desktop\\gastric\\gastric_data_seperate.csv')
+    if sample :
+        gastric_data_csv = pd.read_csv('C:\\Users\\User\\Desktop\\gastric\\gastric_sp_data.csv')
+    else :
+        gastric_data_csv = pd.read_csv('C:\\Users\\User\\Desktop\\gastric\\gastric_data_seperate.csv')
 
     gastric_train_folder = gastric_data_csv[gastric_data_csv['Task'] == 'train'].WSI
     gastric_valid_folder = gastric_data_csv[gastric_data_csv['Task'] == 'valid'].WSI
@@ -301,8 +308,8 @@ def gastric_data_read():
     return train_dir, train_label, valid_dir, valid_label, test_dir, test_label
 
 
-def gastric_train_dataloader(batch_size, tf):
-    train_dir, train_label, valid_dir, valid_label, test_dir, test_label = gastric_data_read()
+def gastric_train_dataloader(batch_size, tf, sample = False):
+    train_dir, train_label, valid_dir, valid_label, test_dir, test_label = gastric_data_read(sample)
     organ = pd.Series([2 for i in range(len(train_dir))])
     if tf == 'high':
         TrainDataset = HighTfImageDataset(mode='train', label=train_label, dir=train_dir, organ=organ)
@@ -313,16 +320,16 @@ def gastric_train_dataloader(batch_size, tf):
     return TrainDataloader
 
 
-def gastric_valid_dataloader(batch_size):
-    train_dir, train_label, valid_dir, valid_label, test_dir, test_label = gastric_data_read()
+def gastric_valid_dataloader(batch_size, sample = False):
+    train_dir, train_label, valid_dir, valid_label, test_dir, test_label = gastric_data_read(sample)
     organ = pd.Series([2 for i in range(len(valid_dir))])
     ValidDataset = CustomImageDataset(mode='valid', label=valid_label, dir=valid_dir, organ=organ)
     ValidDataloader = torch.utils.data.DataLoader(ValidDataset, batch_size=batch_size, shuffle=False)
     return ValidDataloader
 
 
-def gastric_test_dataloader():
-    train_dir, train_label, valid_dir, valid_label, test_dir, test_label = gastric_data_read()
+def gastric_test_dataloader(sample = False):
+    train_dir, train_label, valid_dir, valid_label, test_dir, test_label = gastric_data_read(sample)
     organ = pd.Series([2 for i in range(len(test_dir))])
     TestDataset = CustomImageDataset(mode='test', label=test_label, dir=test_dir, organ=organ)
     TestDataloader = torch.utils.data.DataLoader(TestDataset, shuffle=False)
@@ -336,10 +343,10 @@ Oversampling, undersampling, sampling with weights, ...
 """
 
 
-def total_train_dataloader(batch_size, tf):
-    colon_train_dir, colon_train_label, colon_valid_dir, colon_valid_label, colon_test_dir, colon_test_label = colon_data_read()
+def total_train_dataloader(batch_size, tf, sample = False):
+    colon_train_dir, colon_train_label, colon_valid_dir, colon_valid_label, colon_test_dir, colon_test_label = colon_data_read(sample)
     prostate_train_dir, prostate_train_label, prostate_valid_dir, prostate_valid_label, prostate_test_dir, prostate_test_label = prostate_data_read()
-    gastric_train_dir, gastric_train_label, gastric_valid_dir, gastric_valid_label, gastric_test_dir, gastric_test_label = gastric_data_read()
+    gastric_train_dir, gastric_train_label, gastric_valid_dir, gastric_valid_label, gastric_test_dir, gastric_test_label = gastric_data_read(sample)
 
     train_dir = pd.concat([colon_train_dir, prostate_train_dir, gastric_train_dir], ignore_index=True)
     train_organ = pd.concat(
@@ -357,10 +364,10 @@ def total_train_dataloader(batch_size, tf):
     return TrainDataloader
 
 
-def total_valid_dataloader(batch_size):
-    colon_train_dir, colon_train_label, colon_valid_dir, colon_valid_label, colon_test_dir, colon_test_label = colon_data_read()
+def total_valid_dataloader(batch_size, sample = False):
+    colon_train_dir, colon_train_label, colon_valid_dir, colon_valid_label, colon_test_dir, colon_test_label = colon_data_read(sample)
     prostate_train_dir, prostate_train_label, prostate_valid_dir, prostate_valid_label, prostate_test_dir, prostate_test_label = prostate_data_read()
-    gastric_train_dir, gastric_train_label, gastric_valid_dir, gastric_valid_label, gastric_test_dir, gastric_test_label = gastric_data_read()
+    gastric_train_dir, gastric_train_label, gastric_valid_dir, gastric_valid_label, gastric_test_dir, gastric_test_label = gastric_data_read(sample)
 
     valid_dir = pd.concat([colon_valid_dir, prostate_valid_dir, gastric_valid_dir], ignore_index=True)
     valid_organ = pd.concat(
@@ -373,10 +380,10 @@ def total_valid_dataloader(batch_size):
     return ValidDataloader
 
 
-def total_test_dataloader():
-    colon_train_dir, colon_train_label, colon_valid_dir, colon_valid_label, colon_test_dir, colon_test_label = colon_data_read()
+def total_test_dataloader(sample = False):
+    colon_train_dir, colon_train_label, colon_valid_dir, colon_valid_label, colon_test_dir, colon_test_label = colon_data_read(sample)
     prostate_train_dir, prostate_train_label, prostate_valid_dir, prostate_valid_label, prostate_test_dir, prostate_test_label = prostate_data_read()
-    gastric_train_dir, gastric_train_label, gastric_valid_dir, gastric_valid_label, gastric_test_dir, gastric_test_label = gastric_data_read()
+    gastric_train_dir, gastric_train_label, gastric_valid_dir, gastric_valid_label, gastric_test_dir, gastric_test_label = gastric_data_read(sample)
 
     test_dir = pd.concat([colon_test_dir, prostate_test_dir, gastric_test_dir], ignore_index=True)
     test_organ = pd.concat(
@@ -387,3 +394,29 @@ def total_test_dataloader():
     TestDataset = CustomImageDataset(mode='test', label=test_label, dir=test_dir, organ=test_organ)
     TestDataloader = torch.utils.data.DataLoader(TestDataset, shuffle=False)
     return TestDataloader
+
+
+
+# Undersampling
+# added code to above functions with arg 'sample'
+"""
+gastric   0   1   2   3   sum
+train   7895   5881   8054   9076   30906
+valid   6494   5730   4623   6426   23273
+test   11304   7927   6667   9060   34958
+
+colon   0   1   2   3   sum
+train   6476   4554   7817   4755   23602
+valid   4087   1599   5134   2231   13051
+test   5244   1986   7495   3157   17882
+
+prostate   0   1   2   3   sum
+train   2076   6303   451   2283   11113
+valid   666   923   573   320   2482
+test   217   2463   4836   958   8474
+               
+total   0   1   2   3   sum
+train   16447   16738   16322   16114   65621
+valid   11247   8252   10330   8977   38806
+test   16765   12376   18998   13175   61314
+"""
