@@ -384,6 +384,7 @@ infer
 ```
 python multi_task.py --epochs 30 --lr 0.001 --batch_size 40
 
+For Cancer
 ------------------------------
 Cancer Accuracy : 0.832
 
@@ -416,6 +417,8 @@ infer
 2.0       29  3419  20413   2295
 3.0       16   144   2004  10086
 ------------------------------
+
+For Organ
 ------------------------------
 Organ Accuracy : 1.000
 
@@ -541,19 +544,129 @@ infer
 ```
 - DANN
 ```
-python dann.py --epochs 30 --lr 0.001 --batch_size 40
+python dann.py --epochs 30 --lr 0.001 --batch_size 16
+
+```
+-> too low accuracy with epoch 9 -> cancel the project and added PCGrad
+
+- DANN with PCGrad
+```angular2html
+python train_pcgrad.py --batch_size 16
+
+For Cancer
+------------------------------
+Accuracy : 0.322
+
+Recall for Benign : 0.874
+Precision for Benign : 0.311
+f1-score for Benign : 0.230
+
+Recall for WD : 0.000
+Precision for WD : 0.000
+f1-score for WD : 0.000
+
+Recall for MD : 0.192
+Precision for MD : 0.371
+f1-score for MD : 0.127
+
+Recall for PD : 0.071
+Precision for PD : 0.308
+f1-score for PD : 0.058
+
+Recall for Cancer : 0.272
+Precision for Cancer : 0.851
+f1-score for Cancer : 0.206
+
+------------------------------
+Confusion Matrix : 
+label    0.0   1.0    2.0   3.0
+infer                          
+0.0    16293  8210  19428  8409
+2.0     1641  2811   4762  3614
+3.0      718   784    567   921
+------------------------------
+
+For organ
+------------------------------
+Accuracy : 0.253
+
+Recall for colon : 0.352
+Precision for colon : 0.477
+f1-score for colon : 0.202
+
+Recall for prostate : 0.637
+Precision for prostate : 0.087
+f1-score for prostate : 0.076
+
+Recall for gastric : 0.117
+Precision for gastric : 0.449
+f1-score for gastric : 0.093
+
+------------------------------
+Confusion Matrix : 
+organ          0.0   1.0    2.0
+infer_organ                    
+0.0           9834   842   9925
+1.0          14163  3329  20936
+2.0           3980  1052   4097
+
+```
+-> It not works as we thought, gradient reversal layer to 'Organ Classifier' may be harmful to 'Cancer classifier' too even we used PCGrad 
+
+
+## Sampling Data
+
+### Data info
+```
+gastric   0   1   2   3   sum
+train   7895   5881   8054   9076   30906
+valid   6494   5730   4623   6426   23273
+test   11304   7927   6667   9060   34958
+
+colon   0   1   2   3   sum
+train   6476   4554   7817   4755   23602
+valid   4087   1599   5134   2231   13051
+test   5244   1986   7495   3157   17882
+
+prostate   0   1   2   3   sum
+train   2076   6303   451   2283   11113
+valid   666   923   573   320   2482
+test   217   2463   4836   958   8474
+               
+total   0   1   2   3   sum
+train   16447   16738   16322   16114   65621
+valid   11247   8252   10330   8977   38806
+test   16765   12376   18998   13175   61314
+```
+
+### experiments
+- total_organ
+```
+python total_organ.py --sample
+```
+- multi_task
+```
+python multi_task.py --sample
+```
+- DANN
+```
+python dann.py --sample --batch_size 16
+```
+- DANN with PCGrad
+```
+python train_pcgrad.py --sample --batch_size 16
 ```
 
 
-# todo
-- [x]  dataloader for each organs -> code finished, not experimented
-- [x] classification model for each organ -> code finished, not experimented
-- [x] dataloader for integrated model -> code finished, not experimented
-- [x] classification for integrated model -> code finished, not experimented
-- [ ] experiments for single and integrated models
-- [ ] think of how using data
-- [x] apply DANN -> code finished, not experimented
-- [ ] Visulaize with T-SNE
-- [ ] apply MixStyle
-- [ ] Improve Prostate's performance 
 
+# todo
+- [x]  dataloader for each organs
+- [x] classification model for each organ
+- [x] dataloader for integrated model
+- [x] classification for integrated model
+- [x] experiments for single and integrated models
+- [x] think of how using data
+- [x] apply DANN
+- [x] experiment with undersampled data
+- [ ] Visulaize DANN with T-SNE
+- [ ] apply MixStyle

@@ -26,6 +26,7 @@ def train_single_task(network, config, organ):
 
     if config.sample :
         sampled = 'True'
+        print('Training with Undersampled data')
     else :
         sampled = 'False'
 
@@ -140,6 +141,7 @@ def train_multi_task(network, config, mode):
 
     if config.sample :
         sampled = 'True'
+        print('Training with Undersampled data')
     else :
         sampled = 'False'
 
@@ -285,6 +287,7 @@ def train_pcgrad(network, config):
 
     if config.sample :
         sampled = 'True'
+        print('Training with Undersampled data')
     else :
         sampled = 'False'
 
