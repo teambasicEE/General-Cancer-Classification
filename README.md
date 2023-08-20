@@ -699,10 +699,38 @@ test   16765   12376   18998   13175   61314
 ```
 
 ### experiments
+
 - total_organ
 ```
 python total_organ.py --sample
+
+ ------------------------------
+Accuracy : 0.788
+Recall for Benign : 0.974
+Precision for Benign : 0.888
+f1-score for Benign : 0.465
+Recall for WD : 0.740
+Precision for WD : 0.602
+f1-score for WD : 0.332
+Recall for MD : 0.681
+Precision for MD : 0.815
+f1-score for MD : 0.371
+Recall for PD : 0.770
+Precision for PD : 0.796
+f1-score for PD : 0.391
+Recall for Cancer : 0.954
+Precision for Cancer : 0.990
+f1-score for Cancer : 0.486
+------------------------------
+Confusion Matrix :
+label    0.0   1.0    2.0   3.0
+infer
+0.0    18168   317    998   976
+1.0      425  8738   4765   580
+2.0       30  2365  16854  1423
+3.0       29   385   2140  9965
 ```
+
 - multi_task
 ```
 python multi_task.py --sample
