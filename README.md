@@ -542,9 +542,68 @@ infer
 2.0       14  1503  4088   759
 3.0       15   137  1662  7785
 ```
-- DANN
+- DANN (epoch 9 only)
 ```
 python dann.py --epochs 30 --lr 0.001 --batch_size 16
+
+for Cancer
+------------------------------
+Accuracy : 0.216
+
+Recall for Benign : 0.633
+Precision for Benign : 0.266
+f1-score for Benign : 0.187
+
+Recall for WD : 0.000
+Precision for WD : 0.000
+f1-score for WD : 0.000
+
+Recall for MD : 0.050
+Precision for MD : 0.132
+f1-score for MD : 0.036
+
+Recall for PD : 0.128
+Precision for PD : 0.115
+f1-score for PD : 0.061
+
+Recall for Cancer : 0.341
+Precision for Cancer : 0.711
+f1-score for Cancer : 0.230
+
+------------------------------
+Confusion Matrix : 
+label    0.0   1.0    2.0   3.0
+infer                          
+0.0    11805  8017  18308  6317
+1.0        0     1      3     0
+2.0      855  2305   1235  4973
+3.0     5992  1482   5211  1654
+------------------------------
+
+for Organ
+------------------------------
+Accuracy : 0.535
+
+Recall for colon : 0.388
+Precision for colon : 0.577
+f1-score for colon : 0.232
+
+Recall for prostate : 0.099
+Precision for prostate : 0.029
+f1-score for prostate : 0.022
+
+Recall for gastric : 0.718
+Precision for gastric : 0.800
+f1-score for gastric : 0.378
+
+------------------------------
+Confusion Matrix : 
+organ          0.0   1.0    2.0
+infer_organ                    
+0.0          10846   202   7745
+1.0          15362   515   2129
+2.0           1769  4506  25084
+
 
 ```
 -> too low accuracy with epoch 9 -> cancel the project and added PCGrad
@@ -612,7 +671,7 @@ infer_organ
 
 ```
 -> It not works as we thought, gradient reversal layer to 'Organ Classifier' may be harmful to 'Cancer classifier' too even we used PCGrad 
-
+-> especially no infer for label 1(WD)
 
 ## Sampling Data
 
