@@ -671,31 +671,32 @@ infer_organ
 
 ```
 -> It not works as we thought, gradient reversal layer to 'Organ Classifier' may be harmful to 'Cancer classifier' too even we used PCGrad 
+
 -> especially no infer for label 1(WD)
 
 ## Sampling Data
 
 ### Data info
 ```
-gastric   0   1   2   3   sum
+colon   0      1      2      3     sum
+train   6476   4554   7817   4755   23602
+valid   4087   1599   5134   2231   13051
+test    5244   1986   7495   3157   17882
+
+gastric   0    1      2      3      sum
 train   6755   4942   4900   5875   22472
 valid   6494   5730   4623   6426   23273
 test   11304   7927   6667   9060   34958
 
-colon   0   1   2   3   sum
-train   6476   4554   7817   4755   23602
-valid   4087   1599   5134   2231   13051
-test   5244   1986   7495   3157   17882
-
-prostate   0   1   2   3   sum
+prostate   0   1      2     3      sum
 train   2076   6303   451   2283   11113
-valid   666   923   573   320   2482
-test   217   2463   4836   958   8474
+valid   666    923    573   320    2482
+test    217    2463   4836  958    8474
                
-total   0   1   2   3   sum
+total   0       1       2       3       sum
 train   15307   15799   13168   12913   57187
-valid   11247   8252   10330   8977   38806
-test   16765   12376   18998   13175   61314
+valid   11247   8252    10330   8977    38806
+test    16765   12376   18998   13175   61314
 ```
 
 ### experiments
@@ -706,18 +707,23 @@ python total_organ.py --sample
 
  ------------------------------
 Accuracy : 0.788
+
 Recall for Benign : 0.974
 Precision for Benign : 0.888
 f1-score for Benign : 0.465
+
 Recall for WD : 0.740
 Precision for WD : 0.602
 f1-score for WD : 0.332
+
 Recall for MD : 0.681
 Precision for MD : 0.815
 f1-score for MD : 0.371
+
 Recall for PD : 0.770
 Precision for PD : 0.796
 f1-score for PD : 0.391
+
 Recall for Cancer : 0.954
 Precision for Cancer : 0.990
 f1-score for Cancer : 0.486
@@ -734,14 +740,17 @@ infer
 - multi_task
 ```
 python multi_task.py --sample
+
 ```
 - DANN
 ```
 python dann.py --sample --batch_size 16
+
 ```
 - DANN with PCGrad
 ```
 python train_pcgrad.py --sample --batch_size 16
+
 ```
 
 

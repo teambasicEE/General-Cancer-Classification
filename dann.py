@@ -26,8 +26,13 @@ def dann_train_test(network, config):
 
     base_path = 'C:\\Users\\User\\Desktop\\General-Cancer-Classification\\results\\'
 
+    if config.sample:
+        sampled = 'True'
+    else:
+        sampled = 'False'
+
     acc = sum(result['infer'] == result['label']) / len(result)
-    result.to_csv(base_path + f'dann_infer_result_acc_{acc:.5f}.csv')
+    result.to_csv(base_path + f'dann_infer_sampling_{sampled}_result_acc_{acc:.5f}.csv')
 
     multi_task_analysis(result)
 

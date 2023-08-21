@@ -400,23 +400,23 @@ def total_test_dataloader(sample = False):
 # Undersampling
 # added code to above functions with arg 'sample'
 """
-gastric   0   1   2   3   sum
-train   7895   5881   8054   9076   30906
+colon   0      1      2      3     sum
+train   6476   4554   7817   4755   23602
+valid   4087   1599   5134   2231   13051
+test    5244   1986   7495   3157   17882
+
+gastric   0    1      2      3      sum
+train   6755   4942   4900   5875   22472
 valid   6494   5730   4623   6426   23273
 test   11304   7927   6667   9060   34958
 
-colon   0   1   2   3   sum
-train   6476   4554   7817   4755   23602
-valid   4087   1599   5134   2231   13051
-test   5244   1986   7495   3157   17882
-
-prostate   0   1   2   3   sum
+prostate   0   1      2     3      sum
 train   2076   6303   451   2283   11113
-valid   666   923   573   320   2482
-test   217   2463   4836   958   8474
+valid   666    923    573   320    2482
+test    217    2463   4836  958    8474
                
-total   0   1   2   3   sum
-train   16447   16738   16322   16114   65621
-valid   11247   8252   10330   8977   38806
-test   16765   12376   18998   13175   61314
+total   0       1       2       3       sum
+train   15307   15799   13168   12913   57187
+valid   11247   8252    10330   8977    38806
+test    16765   12376   18998   13175   61314
 """
