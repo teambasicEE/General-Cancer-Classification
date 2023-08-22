@@ -799,6 +799,106 @@ infer_organ
 1.0              7  5223     33
 2.0              0     0  34711
 
+
+## For Colon
+------------------------------
+Accuracy : 0.818
+
+Recall for Benign : 0.998
+Precision for Benign : 0.996
+f1-score for Benign : 0.499
+
+Recall for WD : 0.333
+Precision for WD : 0.223
+f1-score for WD : 0.133
+
+Recall for MD : 0.831
+Precision for MD : 0.854
+f1-score for MD : 0.421
+
+Recall for PD : 0.671
+Precision for PD : 0.811
+f1-score for PD : 0.367
+
+Recall for Cancer : 0.999
+Precision for Cancer : 0.999
+f1-score for Cancer : 0.500
+
+------------------------------
+Confusion Matrix : 
+label   0.0   1.0    2.0   3.0
+infer                         
+0.0    6708     3     15     6
+1.0       9   661   2239    57
+2.0       3  1302  13387   976
+3.0       1    20    472  2118
+
+## For Prostate
+------------------------------
+Accuracy : 0.723
+
+Recall for Benign : 0.946
+Precision for Benign : 0.886
+f1-score for Benign : 0.458
+
+Recall for WD : 0.726
+Precision for WD : 0.732
+f1-score for WD : 0.364
+
+Recall for MD : 0.612
+Precision for MD : 0.698
+f1-score for MD : 0.326
+
+Recall for PD : 0.824
+Precision for PD : 0.636
+f1-score for PD : 0.359
+
+Recall for Cancer : 0.983
+Precision for Cancer : 0.993
+f1-score for Cancer : 0.494
+
+------------------------------
+Confusion Matrix : 
+label  0.0   1.0   2.0  3.0
+infer                      
+0.0    593    55    18    3
+1.0     29  1374   454   21
+2.0      4   416  1210  104
+3.0      1    47   295  599
+
+## For Gastric
+------------------------------
+Accuracy : 0.745
+
+Recall for Benign : 0.939
+Precision for Benign : 0.795
+f1-score for Benign : 0.430
+
+Recall for WD : 0.806
+Precision for WD : 0.658
+f1-score for WD : 0.362
+
+Recall for MD : 0.236
+Precision for MD : 0.570
+f1-score for MD : 0.167
+
+Recall for PD : 0.823
+Precision for PD : 0.816
+f1-score for PD : 0.410
+
+Recall for Cancer : 0.884
+Precision for Cancer : 0.968
+f1-score for Cancer : 0.462
+
+------------------------------
+Confusion Matrix : 
+label    0.0   1.0   2.0   3.0
+infer                         
+0.0    10615   307  1491   942
+1.0      635  6390  2147   538
+2.0       10  1049  1574   128
+3.0       44   181  1455  7452
+
 ```
 - DANN
 ```
