@@ -735,6 +735,107 @@ infer
 1.0      425  8738   4765   580
 2.0       30  2365  16854  1423
 3.0       29   385   2140  9965
+
+
+## For Colon
+------------------------------
+Accuracy : 0.807
+
+Recall for Benign : 0.996
+Precision for Benign : 0.989
+f1-score for Benign : 0.496
+
+Recall for WD : 0.306
+Precision for WD : 0.205
+f1-score for WD : 0.123
+
+Recall for MD : 0.827
+Precision for MD : 0.843
+f1-score for MD : 0.418
+
+Recall for PD : 0.617
+Precision for PD : 0.802
+f1-score for PD : 0.349
+
+Recall for Cancer : 0.997
+Precision for Cancer : 0.999
+f1-score for Cancer : 0.499
+
+------------------------------
+Confusion Matrix : 
+label   0.0   1.0    2.0   3.0
+infer                         
+0.0    6693     5     63     6
+1.0      15   608   2255    93
+2.0      13  1358  13330  1110
+3.0       0    15    465  1948
+
+## For Prostate
+------------------------------
+Accuracy : 0.764
+
+Recall for Benign : 0.954
+Precision for Benign : 0.920
+f1-score for Benign : 0.468
+
+Recall for WD : 0.800
+Precision for WD : 0.758
+f1-score for WD : 0.389
+
+Recall for MD : 0.666
+Precision for MD : 0.726
+f1-score for MD : 0.347
+
+Recall for PD : 0.770
+Precision for PD : 0.733
+f1-score for PD : 0.376
+
+Recall for Cancer : 0.989
+Precision for Cancer : 0.994
+f1-score for Cancer : 0.496
+
+------------------------------
+Confusion Matrix : 
+label  0.0   1.0   2.0  3.0
+infer                      
+0.0    598    34    18    0
+1.0     20  1514   453   10
+2.0      9   330  1316  157
+3.0      0    14   190  560
+
+## For Gastric
+------------------------------
+Accuracy : 0.777
+
+Recall for Benign : 0.962
+Precision for Benign : 0.834
+f1-score for Benign : 0.447
+
+Recall for WD : 0.835
+Precision for WD : 0.694
+f1-score for WD : 0.379
+
+Recall for MD : 0.331
+Precision for MD : 0.724
+f1-score for MD : 0.227
+
+Recall for PD : 0.823
+Precision for PD : 0.800
+f1-score for PD : 0.406
+
+Recall for Cancer : 0.908
+Precision for Cancer : 0.981
+f1-score for Cancer : 0.472
+
+------------------------------
+Confusion Matrix : 
+label    0.0   1.0   2.0   3.0
+infer                         
+0.0    10877   278   917   970
+1.0      390  6616  2057   477
+2.0        8   677  2208   156
+3.0       29   356  1485  7457
+
 ```
 
 - multi_task
