@@ -301,6 +301,7 @@ def train_pcgrad(network, config):
     lr = config.lr
     batch_size = config.batch_size
     optimizer = PCGrad(torch.optim.Adam(network.parameters(), lr=lr))
+    torch.nn.utils.clip_grad_norm(network.parameters(), 3.)
     # scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, len(TrainDataloader)//5, 0.0001)
 
     network.to(device)

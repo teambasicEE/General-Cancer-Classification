@@ -1010,6 +1010,61 @@ python dann.py --sample --batch_size 16
 ```
 python train_pcgrad.py --sample --batch_size 16
 
+------------------------------
+Accuracy : 0.217
+
+Recall for Benign : 0.435
+Precision for Benign : 0.291
+f1-score for Benign : 0.174
+
+Recall for WD : 0.031
+Precision for WD : 0.038
+f1-score for WD : 0.017
+
+Recall for MD : 0.069
+Precision for MD : 0.207
+f1-score for MD : 0.052
+
+Recall for PD : 0.357
+Precision for PD : 0.205
+f1-score for PD : 0.130
+
+Recall for Cancer : 0.600
+Precision for Cancer : 0.738
+f1-score for Cancer : 0.331
+
+------------------------------
+Confusion Matrix :
+label   0.0   1.0   2.0   3.0
+infer
+0.0    8117  6882  8629  4287
+1.0    2760   362  5409   999
+2.0    1647  1825  1703  3038
+3.0    6128  2736  9016  4620
+------------------------------
+------------------------------
+Accuracy : 0.260
+
+Recall for colon : 0.629
+Precision for colon : 0.517
+f1-score for colon : 0.284
+
+Recall for prostate : 0.002
+Precision for prostate : 0.000
+f1-score for prostate : 0.000
+
+Recall for gastric : 0.004
+Precision for gastric : 0.023
+f1-score for gastric : 0.003
+
+------------------------------
+Confusion Matrix :
+organ          0.0   1.0    2.0
+infer_organ
+0.0          17607    22  16402
+1.0          10098    10  18429
+2.0            272  5191    127
+
 ```
 
 ## Experiments
@@ -1085,6 +1140,9 @@ infer
 3.0    1719   321  2364  7390
 
 ```
+
+### Ensemble (Soft Voting)
+
 
 # todo
 - [x]  dataloader for each organs
