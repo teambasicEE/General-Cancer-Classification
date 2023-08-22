@@ -1012,7 +1012,79 @@ python train_pcgrad.py --sample --batch_size 16
 
 ```
 
+## Experiments
+-> if there are no significant difference in domain of each organs?
 
+-> Predict prostate's cancer class with colon model
+```
+------------------------------
+Accuracy : 0.381
+
+Recall for Benign : 0.000
+Precision for Benign : 0.000
+f1-score for Benign : nan
+
+Recall for WD : 0.362
+Precision for WD : 0.368
+f1-score for WD : 0.183
+
+Recall for MD : 0.563
+Precision for MD : 0.408
+f1-score for MD : 0.237
+
+Recall for PD : 0.267
+Precision for PD : 0.305
+f1-score for PD : 0.142
+
+Recall for Cancer : 1.000
+Precision for Cancer : 0.880
+f1-score for Cancer : 0.468
+
+------------------------------
+Confusion Matrix : 
+label    0     1     2    3
+infer                      
+0        0     0     1    0
+1      509   685   585   82
+2       64  1097  1113  451
+3       54   110   278  194
+```
+
+-> infer gastric with colon model
+```
+------------------------------
+Accuracy : 0.525
+
+Recall for Benign : 0.513
+Precision for Benign : 0.998
+f1-score for Benign : 0.339
+
+Recall for WD : 0.141
+Precision for WD : 0.330
+f1-score for WD : 0.099
+
+Recall for MD : 0.605
+Precision for MD : 0.289
+f1-score for MD : 0.195
+
+Recall for PD : 0.816
+Precision for PD : 0.627
+f1-score for PD : 0.354
+
+Recall for Cancer : 1.000
+Precision for Cancer : 0.811
+f1-score for Cancer : 0.448
+
+------------------------------
+Confusion Matrix : 
+label   0.0   1.0   2.0   3.0
+infer                        
+0.0    5795     1     5     4
+1.0    1724  1119   266   287
+2.0    2066  6486  4032  1379
+3.0    1719   321  2364  7390
+
+```
 
 # todo
 - [x]  dataloader for each organs
