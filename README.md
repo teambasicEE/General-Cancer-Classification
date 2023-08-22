@@ -741,6 +741,64 @@ infer
 ```
 python multi_task.py --sample
 
+# For Cancer
+------------------------------
+Accuracy : 0.773
+
+Recall for Benign : 0.961
+Precision for Benign : 0.863
+f1-score for Benign : 0.455
+
+Recall for WD : 0.714
+Precision for WD : 0.579
+f1-score for WD : 0.320
+
+Recall for MD : 0.653
+Precision for MD : 0.802
+f1-score for MD : 0.360
+
+Recall for PD : 0.786
+Precision for PD : 0.802
+f1-score for PD : 0.397
+
+Recall for Cancer : 0.943
+Precision for Cancer : 0.984
+f1-score for Cancer : 0.482
+
+------------------------------
+Confusion Matrix :
+label    0.0   1.0    2.0    3.0
+infer
+0.0    17916   365   1524    951
+1.0      673  8425   4840    616
+2.0       17  2767  16171   1208
+3.0       46   248   2222  10169
+------------------------------
+
+# For Organ
+------------------------------
+Accuracy : 0.996
+
+Recall for colon : 1.000
+Precision for colon : 0.992
+f1-score for colon : 0.498
+
+Recall for prostate : 1.000
+Precision for prostate : 0.992
+f1-score for prostate : 0.498
+
+Recall for gastric : 0.993
+Precision for gastric : 1.000
+f1-score for gastric : 0.498
+
+------------------------------
+Confusion Matrix :
+organ          0.0   1.0    2.0
+infer_organ
+0.0          27970     0    214
+1.0              7  5223     33
+2.0              0     0  34711
+
 ```
 - DANN
 ```
