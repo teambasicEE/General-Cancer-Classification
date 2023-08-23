@@ -1142,7 +1142,140 @@ infer
 ```
 
 ### Ensemble (Soft Voting)
+```
+------------------------------
+Accuracy : 0.763
 
+Recall for Benign : 0.929
+Precision for Benign : 0.974
+f1-score for Benign : 0.475
+
+Recall for WD : 0.402
+Precision for WD : 0.623
+f1-score for WD : 0.244
+
+Recall for MD : 0.781
+Precision for MD : 0.691
+f1-score for MD : 0.367
+
+Recall for PD : 0.821
+Precision for PD : 0.720
+f1-score for PD : 0.384
+
+Recall for Cancer : 0.991
+Precision for Cancer : 0.974
+f1-score for Cancer : 0.491
+
+------------------------------
+Confusion Matrix :
+label    0.0   1.0    2.0    3.0
+infer
+0.0    17329   233     95    138
+1.0      818  4745   1952    103
+2.0      372  6212  19336   2079
+3.0      133   615   3374  10624
+
+## For Colon
+------------------------------
+Accuracy : 0.856
+
+Recall for Benign : 0.995
+Precision for Benign : 0.998
+f1-score for Benign : 0.498
+
+Recall for WD : 0.479
+Precision for WD : 0.360
+f1-score for WD : 0.206
+
+Recall for MD : 0.870
+Precision for MD : 0.883
+f1-score for MD : 0.438
+
+Recall for PD : 0.723
+Precision for PD : 0.829
+f1-score for PD : 0.386
+
+Recall for Cancer : 0.999
+Precision for Cancer : 0.998
+f1-score for Cancer : 0.499
+
+------------------------------
+Confusion Matrix : 
+label   0.0   1.0    2.0   3.0
+infer                         
+0.0    6688     2     13     1
+1.0      26   952   1633    30
+2.0       5  1010  14020   845
+3.0       2    22    447  2281
+
+## For Prostate
+------------------------------
+Accuracy : 0.427
+
+Recall for Benign : 0.507
+Precision for Benign : 0.576
+f1-score for Benign : 0.270
+
+Recall for WD : 0.165
+Precision for WD : 0.634
+f1-score for WD : 0.131
+
+Recall for MD : 0.567
+Precision for MD : 0.420
+f1-score for MD : 0.241
+
+Recall for PD : 0.659
+Precision for PD : 0.318
+f1-score for PD : 0.214
+
+Recall for Cancer : 0.949
+Precision for Cancer : 0.934
+f1-score for Cancer : 0.471
+
+------------------------------
+Confusion Matrix : 
+label  0.0   1.0   2.0  3.0
+infer                      
+0.0    318   153    55   26
+1.0     92   313    79   10
+2.0    149  1187  1121  212
+3.0     68   239   722  479
+
+## For Gastric
+------------------------------
+Accuracy : 0.740
+
+Recall for Benign : 0.913
+Precision for Benign : 0.980
+f1-score for Benign : 0.473
+
+Recall for WD : 0.439
+Precision for WD : 0.776
+f1-score for WD : 0.280
+
+Recall for MD : 0.629
+Precision for MD : 0.444
+f1-score for MD : 0.260
+
+Recall for PD : 0.868
+Precision for PD : 0.750
+f1-score for PD : 0.402
+
+Recall for Cancer : 0.991
+Precision for Cancer : 0.960
+f1-score for Cancer : 0.488
+
+------------------------------
+Confusion Matrix : 
+label    0.0   1.0   2.0   3.0
+infer                         
+0.0    10323    78    27   111
+1.0      700  3480   240    63
+2.0      218  4015  4195  1022
+3.0       63   354  2205  7864
+
+
+```
 
 # todo
 - [x]  dataloader for each organs
