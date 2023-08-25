@@ -40,5 +40,5 @@ def pcgrad_train_test(network, config):
 if __name__ == "__main__":
     seed_everything(42)
     config = Config()
-    network = DANN_model
+    network = torch.load('C:\\Users\\User\\Desktop\\General-Cancer-Classification\\results\\pcgrad_dann_task_0.001_low.pt')
     pcgrad_train_test(network, config)
