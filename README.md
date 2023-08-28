@@ -1140,6 +1140,148 @@ infer
 3.0    1719   321  2364  7390
 
 ```
+-> infer colon with prostate model
+```
+------------------------------
+Accuracy : 0.304
+
+Recall for Benign : 0.229
+Precision for Benign : 0.569
+f1-score for Benign : 0.163
+
+Recall for WD : 0.010
+Precision for WD : 0.015
+f1-score for WD : 0.006
+
+Recall for MD : 0.287
+Precision for MD : 0.761
+f1-score for MD : 0.208
+
+Recall for PD : 0.736
+Precision for PD : 0.129
+f1-score for PD : 0.110
+
+Recall for Cancer : 0.945
+Precision for Cancer : 0.795
+f1-score for Cancer : 0.432
+
+------------------------------
+Confusion Matrix : 
+label     0     1      2     3
+infer                         
+0      1537   652    462    51
+1      1055    19    128    31
+2       475   222   4619   752
+3      3654  1093  10904  2323
+
+```
+
+-> infer gastric with prostate model
+```
+inferring...
+------------------------------
+Accuracy : 0.334
+
+Recall for Benign : 0.114
+Precision for Benign : 0.282
+f1-score for Benign : 0.081
+
+Recall for WD : 0.328
+Precision for WD : 0.253
+f1-score for WD : 0.143
+
+Recall for MD : 0.656
+Precision for MD : 0.321
+f1-score for MD : 0.215
+
+Recall for PD : 0.377
+Precision for PD : 0.529
+f1-score for PD : 0.220
+
+Recall for Cancer : 0.861
+Precision for Cancer : 0.670
+f1-score for Cancer : 0.377
+
+------------------------------
+Confusion Matrix : 
+label   0.0   1.0   2.0   3.0
+infer                        
+0.0    1293  2163   656   477
+1.0    5940  2602   711  1031
+2.0    2954  2166  4373  4140
+3.0    1117   996   927  3412
+```
+-> infer colon with gastric model
+```
+------------------------------
+Accuracy : 0.587
+
+Recall for Benign : 0.961
+Precision for Benign : 0.978
+f1-score for Benign : 0.485
+
+Recall for WD : 0.902
+Precision for WD : 0.243
+f1-score for WD : 0.191
+
+Recall for MD : 0.430
+Precision for MD : 0.792
+f1-score for MD : 0.279
+
+Recall for PD : 0.394
+Precision for PD : 0.237
+f1-score for PD : 0.148
+
+Recall for Cancer : 0.993
+Precision for Cancer : 0.988
+f1-score for Cancer : 0.495
+
+------------------------------
+Confusion Matrix : 
+label     0     1     2     3
+infer                        
+0      6462     4    53    91
+1       153  1792  5179   248
+2       102   143  6925  1575
+3         4    47  3956  1243
+
+```
+-> infer prostate with gastric model
+```
+------------------------------
+Accuracy : 0.513
+
+Recall for Benign : 0.796
+Precision for Benign : 0.769
+f1-score for Benign : 0.391
+
+Recall for WD : 0.362
+Precision for WD : 0.801
+f1-score for WD : 0.249
+
+Recall for MD : 0.452
+Precision for MD : 0.502
+f1-score for MD : 0.238
+
+Recall for PD : 0.829
+Precision for PD : 0.311
+f1-score for PD : 0.226
+
+Recall for Cancer : 0.967
+Precision for Cancer : 0.972
+f1-score for Cancer : 0.485
+
+------------------------------
+Confusion Matrix : 
+label    0    1    2    3
+infer                    
+0      499  128   21    1
+1       25  685  120   25
+2       10  778  893   98
+3       93  301  943  603
+
+```
+
 
 ### Ensemble (Soft Voting)
 ```
@@ -1275,6 +1417,8 @@ infer
 3.0       63   354  2205  7864
 
 ```
+
+
 
 ### Gradient clipping for gradient reversal layer
 ```
