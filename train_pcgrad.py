@@ -2,13 +2,13 @@ import numpy as np
 import pandas as pd
 import torch
 from utils import Config, seed_everything, multi_task_analysis
-from train import train_pcgrad_continued
+from train import train_pcgrad
 from models import DANN_model
 from dataset import total_test_dataloader, colon_train_dataloader, prostate_train_dataloader, gastric_train_dataloader
 
 def pcgrad_train_test(network, config):
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-    network = train_pcgrad_continued(network, config)
+    network = train_pcgrad(network, config)
 
     result = pd.DataFrame(columns=['infer', 'label', 'infer_organ', 'organ'])
     network.to(device)
@@ -40,5 +40,5 @@ def pcgrad_train_test(network, config):
 if __name__ == "__main__":
     seed_everything(42)
     config = Config()
-    network = torch.load('C:\\Users\\User\\Desktop\\General-Cancer-Classification\\results\\pcgrad_dann_task_0.001_low.pt')
+    network = DANN_model
     pcgrad_train_test(network, config)

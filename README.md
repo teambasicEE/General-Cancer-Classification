@@ -1412,6 +1412,64 @@ infer
 3.0      127    86  1821  7527
 ```
 
+### multi-optimizer
+```angular2html
+------------------------------
+Accuracy : 0.255
+
+Recall for Benign : 0.775
+Precision for Benign : 0.316
+f1-score for Benign : 0.224
+
+Recall for WD : 0.163
+Precision for WD : 0.327
+f1-score for WD : 0.109
+
+Recall for MD : 0.010
+Precision for MD : 0.159
+f1-score for MD : 0.009
+
+Recall for PD : 0.056
+Precision for PD : 0.049
+f1-score for PD : 0.026
+
+Recall for Cancer : 0.367
+Precision for Cancer : 0.812
+f1-score for Cancer : 0.253
+
+------------------------------
+Confusion Matrix :
+label    0.0   1.0    2.0    3.0
+infer
+0.0    14447  6389  14711  10243
+1.0      759  1930   2034   1172
+2.0      424    59    243    799
+3.0     3022  3427   7769    730
+------------------------------
+------------------------------
+Accuracy : 0.387
+
+Recall for colon : 0.044
+Precision for colon : 0.186
+f1-score for colon : 0.036
+
+Recall for prostate : 0.022
+Precision for prostate : 0.005
+f1-score for prostate : 0.004
+
+Recall for gastric : 0.716
+Precision for gastric : 0.663
+f1-score for gastric : 0.344
+
+------------------------------
+Confusion Matrix :
+organ          0.0   1.0    2.0
+infer_organ
+0.0           1241  5110    321
+1.0          14038   113   9620
+2.0          12698     0  25017
+
+```
 
 # todo
 - [x]  dataloader for each organs
