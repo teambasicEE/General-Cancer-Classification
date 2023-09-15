@@ -68,22 +68,22 @@ Accuracy : 0.868
                          
 Recall for Benign : 0.997
 Precision for Benign : 0.999
-f1-score for Benign : 0.499
+f1-score for Benign : 0.998
 
 Recall for WD : 0.176
 Precision for WD : 0.219
-f1-score for WD : 0.098
+f1-score for WD : 0.196
 
 Recall for MD : 0.915
 Precision for MD : 0.872
-f1-score for MD : 0.446
+f1-score for MD : 0.892
 
 Recall for PD : 0.789
 Precision for PD : 0.901
-f1-score for PD : 0.421
+f1-score for PD : 0.842
 
 Precision for Cancer : 0.999
-f1-score for Cancer : 0.500
+f1-score for Cancer : 1.000
 
 ------------------------------
 Confusion Matrix :
@@ -104,23 +104,23 @@ Accuracy : 0.533
                             
 Recall for Benign : 0.599   
 Precision for Benign : 0.474
-f1-score for Benign : 0.265 
+f1-score for Benign : 0.530 
                             
 Recall for WD : 0.507       
 Precision for WD : 0.626    
-f1-score for WD : 0.280     
+f1-score for WD : 0.560    
 
 Recall for MD : 0.535       
 Precision for MD : 0.713    
-f1-score for MD : 0.306     
+f1-score for MD : 0.612     
 
 Recall for PD : 0.573
 Precision for PD : 0.213
-f1-score for PD : 0.155
+f1-score for PD : 0.310
 
 Recall for Cancer : 0.983
 Precision for Cancer : 0.989
-f1-score for Cancer : 0.493
+f1-score for Cancer : 0.986
 
 ------------------------------
 Confusion Matrix :
@@ -141,23 +141,23 @@ Accuracy : 0.599
 
 Recall for Benign : 0.616
 Precision for Benign : 0.965
-f1-score for Benign : 0.376
+f1-score for Benign : 0.752
 
 Recall for WD : 0.712
 Precision for WD : 0.657
-f1-score for WD : 0.342
+f1-score for WD : 0.684
 
 Recall for MD : 0.417
 Precision for MD : 0.585
-f1-score for MD : 0.244
+f1-score for MD : 0.488
 
 Recall for PD : 0.787
 Precision for PD : 0.420
-f1-score for PD : 0.274
+f1-score for PD : 0.548
 
 Recall for Cancer : 0.997
 Precision for Cancer : 0.950
-f1-score for Cancer : 0.486
+f1-score for Cancer : 0.972
 
 ------------------------------
 Confusion Matrix :
@@ -176,23 +176,23 @@ Accuracy : 0.610
 
 Recall for Benign : 0.689
 Precision for Benign : 0.971
-f1-score for Benign : 0.403
+f1-score for Benign : 0.806
 
 Recall for WD : 0.635
 Precision for WD : 0.668
-f1-score for WD : 0.326
+f1-score for WD : 0.652
 
 Recall for MD : 0.506
 Precision for MD : 0.563
-f1-score for MD : 0.267
+f1-score for MD : 0.534
 
 Recall for PD : 0.757
 Precision for PD : 0.457
-f1-score for PD : 0.285
+f1-score for PD : 0.570
 
 Recall for Cancer : 0.997
 Precision for Cancer : 0.959
-f1-score for Cancer : 0.489
+f1-score for Cancer : 0.978
 
 ------------------------------
 Confusion Matrix :
@@ -212,23 +212,23 @@ Accuracy : 0.795
 
 Recall for Benign : 0.948
 Precision for Benign : 0.944
-f1-score for Benign : 0.473
+f1-score for Benign : 0.946
 
 Recall for WD : 0.784
 Precision for WD : 0.801
-f1-score for WD : 0.396
+f1-score for WD : 0.792
 
 Recall for MD : 0.487
 Precision for MD : 0.579
-f1-score for MD : 0.265
+f1-score for MD : 0.530
 
 Recall for PD : 0.840
 Precision for PD : 0.743
-f1-score for PD : 0.394
+f1-score for PD : 0.788
 
 Recall for Cancer : 0.973
 Precision for Cancer : 0.975
-f1-score for Cancer : 0.487
+f1-score for Cancer : 0.974
 
 ------------------------------
 Confusion Matrix :
@@ -249,23 +249,23 @@ Accuracy : 0.825
 
 Recall for Benign : 0.974
 Precision for Benign : 0.958
-f1-score for Benign : 0.483
+f1-score for Benign : 0.966
 
 Recall for WD : 0.557
 Precision for WD : 0.745
-f1-score for WD : 0.319
+f1-score for WD : 0.638
 
 Recall for MD : 0.862
 Precision for MD : 0.753
-f1-score for MD : 0.402
+f1-score for MD : 0.804
 
 Recall for PD : 0.782
 Precision for PD : 0.842
-f1-score for PD : 0.405
+f1-score for PD : 0.810
 
 Recall for Cancer : 0.984
 Precision for Cancer : 0.990
-f1-score for Cancer : 0.494
+f1-score for Cancer : 0.988
 
 ------------------------------
 Confusion Matrix :
@@ -285,23 +285,23 @@ Accuracy : 0.855
 
 Recall for Benign : 0.999
 Precision for Benign : 0.996
-f1-score for Benign : 0.499
+f1-score for Benign : 0.998
 
 Recall for WD : 0.042
 Precision for WD : 0.167
-f1-score for WD : 0.034
+f1-score for WD : 0.068
 
 Recall for MD : 0.969
 Precision for MD : 0.817
-f1-score for MD : 0.443
+f1-score for MD : 0.886
 
 Recall for PD : 0.475
 Precision for PD : 0.931
-f1-score for PD : 0.315
+f1-score for PD : 0.630
 
 Recall for Cancer : 0.999
 Precision for Cancer : 1.000
-f1-score for Cancer : 0.500
+f1-score for Cancer : 1.000
 
 ------------------------------
 Confusion Matrix : 
@@ -318,23 +318,23 @@ Accuracy : 0.756
 
 Recall for Benign : 0.928
 Precision for Benign : 0.922
-f1-score for Benign : 0.463
+f1-score for Benign : 0.926
 
 Recall for WD : 0.668
 Precision for WD : 0.794
-f1-score for WD : 0.363
+f1-score for WD : 0.726
 
 Recall for MD : 0.789
 Precision for MD : 0.666
-f1-score for MD : 0.361
+f1-score for MD : 0.722
 
 Recall for PD : 0.746
 Precision for PD : 0.821
-f1-score for PD : 0.391
+f1-score for PD : 0.782
 
 Recall for Cancer : 0.989
 Precision for Cancer : 0.990
-f1-score for Cancer : 0.495
+f1-score for Cancer : 0.990
 
 ------------------------------
 Confusion Matrix : 
@@ -351,23 +351,23 @@ Accuracy : 0.811
 
 Recall for Benign : 0.962
 Precision for Benign : 0.937
-f1-score for Benign : 0.475
+f1-score for Benign : 0.950
 
 Recall for WD : 0.660
 Precision for WD : 0.776
-f1-score for WD : 0.357
+f1-score for WD : 0.714
 
 Recall for MD : 0.623
 Precision for MD : 0.606
-f1-score for MD : 0.307
+f1-score for MD : 0.614
 
 Recall for PD : 0.892
 Precision for PD : 0.829
-f1-score for PD : 0.430
+f1-score for PD : 0.860
 
 Recall for Cancer : 0.969
 Precision for Cancer : 0.982
-f1-score for Cancer : 0.488
+f1-score for Cancer : 0.976
 
 ------------------------------
 Confusion Matrix : 
@@ -390,23 +390,23 @@ Cancer Accuracy : 0.832
 
 Recall for Benign : 0.986
 Precision for Benign : 0.939
-f1-score for Benign : 0.481
+f1-score for Benign : 0.962
 
 Recall for WD : 0.662
 Precision for WD : 0.767
-f1-score for WD : 0.355
+f1-score for WD : 0.710
 
 Recall for MD : 0.825
 Precision for MD : 0.780
-f1-score for MD : 0.401
+f1-score for MD : 0.802
 
 Recall for PD : 0.779
 Precision for PD : 0.823
-f1-score for PD : 0.400
+f1-score for PD : 0.800
 
 Recall for Cancer : 0.976
 Precision for Cancer : 0.994
-f1-score for Cancer : 0.493
+f1-score for Cancer : 0.986
 
 ------------------------------
 Confusion Matrix :
@@ -424,15 +424,15 @@ Organ Accuracy : 1.000
 
 Recall for colon : 1.000
 Precision for colon : 1.000
-f1-score for colon : 0.500
+f1-score for colon : 1.000
 
 Recall for prostate : 1.000
 Precision for prostate : 0.998
-f1-score for prostate : 0.500
+f1-score for prostate : 1.000
 
 Recall for gastric : 1.000
 Precision for gastric : 1.000
-f1-score for gastric : 0.500
+f1-score for gastric : 1.000
 
 ------------------------------
 Confusion Matrix :
@@ -449,23 +449,23 @@ Accuracy : 0.851
 
 Recall for Benign : 0.997
 Precision for Benign : 0.998
-f1-score for Benign : 0.499
+f1-score for Benign : 0.998
 
 Recall for WD : 0.207
 Precision for WD : 0.291
-f1-score for WD : 0.121
+f1-score for WD : 0.242
 
 Recall for MD : 0.930
 Precision for MD : 0.834
-f1-score for MD : 0.440
+f1-score for MD : 0.880
 
 Recall for PD : 0.545
 Precision for PD : 0.916
-f1-score for PD : 0.342
+f1-score for PD : 0.684
 
 Recall for Cancer : 0.999
 Precision for Cancer : 0.999
-f1-score for Cancer : 0.500
+f1-score for Cancer : 1.000
 
 ------------------------------
 Confusion Matrix : 
@@ -482,23 +482,23 @@ Accuracy : 0.771
 
 Recall for Benign : 0.974
 Precision for Benign : 0.884
-f1-score for Benign : 0.464
+f1-score for Benign : 0.928
 
 Recall for WD : 0.790
 Precision for WD : 0.773
-f1-score for WD : 0.391
+f1-score for WD : 0.782
 
 Recall for MD : 0.679
 Precision for MD : 0.735
-f1-score for MD : 0.353
+f1-score for MD : 0.706
 
 Recall for PD : 0.798
 Precision for PD : 0.750
-f1-score for PD : 0.387
+f1-score for PD : 0.774
 
 Recall for Cancer : 0.983
 Precision for Cancer : 0.996
-f1-score for Cancer : 0.495
+f1-score for Cancer : 0.990
 
 ------------------------------
 Confusion Matrix : 
@@ -515,23 +515,23 @@ Accuracy : 0.825
 
 Recall for Benign : 0.979
 Precision for Benign : 0.910
-f1-score for Benign : 0.472
+f1-score for Benign : 0.944
 
 Recall for WD : 0.745
 Precision for WD : 0.865
-f1-score for WD : 0.400
+f1-score for WD : 0.800
 
 Recall for MD : 0.613
 Precision for MD : 0.642
-f1-score for MD : 0.314
+f1-score for MD : 0.628
 
 Recall for PD : 0.859
 Precision for PD : 0.811
-f1-score for PD : 0.417
+f1-score for PD : 0.834
 
 Recall for Cancer : 0.954
 Precision for Cancer : 0.990
-f1-score for Cancer : 0.486
+f1-score for Cancer : 0.972
 
 ------------------------------
 Confusion Matrix : 
@@ -552,7 +552,7 @@ Accuracy : 0.216
 
 Recall for Benign : 0.633
 Precision for Benign : 0.266
-f1-score for Benign : 0.187
+f1-score for Benign : 0.374
 
 Recall for WD : 0.000
 Precision for WD : 0.000
@@ -560,15 +560,15 @@ f1-score for WD : 0.000
 
 Recall for MD : 0.050
 Precision for MD : 0.132
-f1-score for MD : 0.036
+f1-score for MD : 0.072
 
 Recall for PD : 0.128
 Precision for PD : 0.115
-f1-score for PD : 0.061
+f1-score for PD : 0.122
 
 Recall for Cancer : 0.341
 Precision for Cancer : 0.711
-f1-score for Cancer : 0.230
+f1-score for Cancer : 0.460
 
 ------------------------------
 Confusion Matrix : 
@@ -586,15 +586,15 @@ Accuracy : 0.535
 
 Recall for colon : 0.388
 Precision for colon : 0.577
-f1-score for colon : 0.232
+f1-score for colon : 0.464
 
 Recall for prostate : 0.099
 Precision for prostate : 0.029
-f1-score for prostate : 0.022
+f1-score for prostate : 0.044
 
 Recall for gastric : 0.718
 Precision for gastric : 0.800
-f1-score for gastric : 0.378
+f1-score for gastric : 0.756
 
 ------------------------------
 Confusion Matrix : 
@@ -618,7 +618,7 @@ Accuracy : 0.322
 
 Recall for Benign : 0.874
 Precision for Benign : 0.311
-f1-score for Benign : 0.230
+f1-score for Benign : 0.460
 
 Recall for WD : 0.000
 Precision for WD : 0.000
@@ -626,15 +626,15 @@ f1-score for WD : 0.000
 
 Recall for MD : 0.192
 Precision for MD : 0.371
-f1-score for MD : 0.127
+f1-score for MD : 0.254
 
 Recall for PD : 0.071
 Precision for PD : 0.308
-f1-score for PD : 0.058
+f1-score for PD : 0.116
 
 Recall for Cancer : 0.272
 Precision for Cancer : 0.851
-f1-score for Cancer : 0.206
+f1-score for Cancer : 0.412
 
 ------------------------------
 Confusion Matrix : 
@@ -651,15 +651,15 @@ Accuracy : 0.253
 
 Recall for colon : 0.352
 Precision for colon : 0.477
-f1-score for colon : 0.202
+f1-score for colon : 0.404
 
 Recall for prostate : 0.637
 Precision for prostate : 0.087
-f1-score for prostate : 0.076
+f1-score for prostate : 0.152
 
 Recall for gastric : 0.117
 Precision for gastric : 0.449
-f1-score for gastric : 0.093
+f1-score for gastric : 0.186
 
 ------------------------------
 Confusion Matrix : 
@@ -710,23 +710,23 @@ Accuracy : 0.788
 
 Recall for Benign : 0.974
 Precision for Benign : 0.888
-f1-score for Benign : 0.465
+f1-score for Benign : 0.930
 
 Recall for WD : 0.740
 Precision for WD : 0.602
-f1-score for WD : 0.332
+f1-score for WD : 0.664
 
 Recall for MD : 0.681
 Precision for MD : 0.815
-f1-score for MD : 0.371
+f1-score for MD : 0.742
 
 Recall for PD : 0.770
 Precision for PD : 0.796
-f1-score for PD : 0.391
+f1-score for PD : 0.782
 
 Recall for Cancer : 0.954
 Precision for Cancer : 0.990
-f1-score for Cancer : 0.486
+f1-score for Cancer : 0.972
 ------------------------------
 Confusion Matrix :
 label    0.0   1.0    2.0   3.0
@@ -743,23 +743,23 @@ Accuracy : 0.807
 
 Recall for Benign : 0.996
 Precision for Benign : 0.989
-f1-score for Benign : 0.496
+f1-score for Benign : 0.992
 
 Recall for WD : 0.306
 Precision for WD : 0.205
-f1-score for WD : 0.123
+f1-score for WD : 0.246
 
 Recall for MD : 0.827
 Precision for MD : 0.843
-f1-score for MD : 0.418
+f1-score for MD : 0.836
 
 Recall for PD : 0.617
 Precision for PD : 0.802
-f1-score for PD : 0.349
+f1-score for PD : 0.698
 
 Recall for Cancer : 0.997
 Precision for Cancer : 0.999
-f1-score for Cancer : 0.499
+f1-score for Cancer : 0.998
 
 ------------------------------
 Confusion Matrix : 
@@ -776,23 +776,23 @@ Accuracy : 0.764
 
 Recall for Benign : 0.954
 Precision for Benign : 0.920
-f1-score for Benign : 0.468
+f1-score for Benign : 0.936
 
 Recall for WD : 0.800
 Precision for WD : 0.758
-f1-score for WD : 0.389
+f1-score for WD : 0.778
 
 Recall for MD : 0.666
 Precision for MD : 0.726
-f1-score for MD : 0.347
+f1-score for MD : 0.694
 
 Recall for PD : 0.770
 Precision for PD : 0.733
-f1-score for PD : 0.376
+f1-score for PD : 0.752
 
 Recall for Cancer : 0.989
 Precision for Cancer : 0.994
-f1-score for Cancer : 0.496
+f1-score for Cancer : 0.992
 
 ------------------------------
 Confusion Matrix : 
@@ -809,23 +809,23 @@ Accuracy : 0.777
 
 Recall for Benign : 0.962
 Precision for Benign : 0.834
-f1-score for Benign : 0.447
+f1-score for Benign : 0.894
 
 Recall for WD : 0.835
 Precision for WD : 0.694
-f1-score for WD : 0.379
+f1-score for WD : 0.758
 
 Recall for MD : 0.331
 Precision for MD : 0.724
-f1-score for MD : 0.227
+f1-score for MD : 0.454
 
 Recall for PD : 0.823
 Precision for PD : 0.800
-f1-score for PD : 0.406
+f1-score for PD : 0.812
 
 Recall for Cancer : 0.908
 Precision for Cancer : 0.981
-f1-score for Cancer : 0.472
+f1-score for Cancer : 0.944
 
 ------------------------------
 Confusion Matrix : 
@@ -848,23 +848,23 @@ Accuracy : 0.773
 
 Recall for Benign : 0.961
 Precision for Benign : 0.863
-f1-score for Benign : 0.455
+f1-score for Benign : 0.910
 
 Recall for WD : 0.714
 Precision for WD : 0.579
-f1-score for WD : 0.320
+f1-score for WD : 0.640
 
 Recall for MD : 0.653
 Precision for MD : 0.802
-f1-score for MD : 0.360
+f1-score for MD : 0.720
 
 Recall for PD : 0.786
 Precision for PD : 0.802
-f1-score for PD : 0.397
+f1-score for PD : 0.794
 
 Recall for Cancer : 0.943
 Precision for Cancer : 0.984
-f1-score for Cancer : 0.482
+f1-score for Cancer : 0.964
 
 ------------------------------
 Confusion Matrix :
@@ -882,15 +882,15 @@ Accuracy : 0.996
 
 Recall for colon : 1.000
 Precision for colon : 0.992
-f1-score for colon : 0.498
+f1-score for colon : 0.996
 
 Recall for prostate : 1.000
 Precision for prostate : 0.992
-f1-score for prostate : 0.498
+f1-score for prostate : 0.996
 
 Recall for gastric : 0.993
 Precision for gastric : 1.000
-f1-score for gastric : 0.498
+f1-score for gastric : 0.996
 
 ------------------------------
 Confusion Matrix :
@@ -907,23 +907,23 @@ Accuracy : 0.818
 
 Recall for Benign : 0.998
 Precision for Benign : 0.996
-f1-score for Benign : 0.499
+f1-score for Benign : 0.998
 
 Recall for WD : 0.333
 Precision for WD : 0.223
-f1-score for WD : 0.133
+f1-score for WD : 0.266
 
 Recall for MD : 0.831
 Precision for MD : 0.854
-f1-score for MD : 0.421
+f1-score for MD : 0.842
 
 Recall for PD : 0.671
 Precision for PD : 0.811
-f1-score for PD : 0.367
+f1-score for PD : 0.734
 
 Recall for Cancer : 0.999
 Precision for Cancer : 0.999
-f1-score for Cancer : 0.500
+f1-score for Cancer : 1.000
 
 ------------------------------
 Confusion Matrix : 
@@ -940,23 +940,23 @@ Accuracy : 0.723
 
 Recall for Benign : 0.946
 Precision for Benign : 0.886
-f1-score for Benign : 0.458
+f1-score for Benign : 0.916
 
 Recall for WD : 0.726
 Precision for WD : 0.732
-f1-score for WD : 0.364
+f1-score for WD : 0.728
 
 Recall for MD : 0.612
 Precision for MD : 0.698
-f1-score for MD : 0.326
+f1-score for MD : 0.652
 
 Recall for PD : 0.824
 Precision for PD : 0.636
-f1-score for PD : 0.359
+f1-score for PD : 0.718
 
 Recall for Cancer : 0.983
 Precision for Cancer : 0.993
-f1-score for Cancer : 0.494
+f1-score for Cancer : 0.988
 
 ------------------------------
 Confusion Matrix : 
@@ -973,23 +973,23 @@ Accuracy : 0.745
 
 Recall for Benign : 0.939
 Precision for Benign : 0.795
-f1-score for Benign : 0.430
+f1-score for Benign : 0.860
 
 Recall for WD : 0.806
 Precision for WD : 0.658
-f1-score for WD : 0.362
+f1-score for WD : 0.724
 
 Recall for MD : 0.236
 Precision for MD : 0.570
-f1-score for MD : 0.167
+f1-score for MD : 0.334
 
 Recall for PD : 0.823
 Precision for PD : 0.816
-f1-score for PD : 0.410
+f1-score for PD : 0.820
 
 Recall for Cancer : 0.884
 Precision for Cancer : 0.968
-f1-score for Cancer : 0.462
+f1-score for Cancer : 0.924
 
 ------------------------------
 Confusion Matrix : 
@@ -1015,23 +1015,23 @@ Accuracy : 0.217
 
 Recall for Benign : 0.435
 Precision for Benign : 0.291
-f1-score for Benign : 0.174
+f1-score for Benign : 0.348
 
 Recall for WD : 0.031
 Precision for WD : 0.038
-f1-score for WD : 0.017
+f1-score for WD : 0.034
 
 Recall for MD : 0.069
 Precision for MD : 0.207
-f1-score for MD : 0.052
+f1-score for MD : 0.104
 
 Recall for PD : 0.357
 Precision for PD : 0.205
-f1-score for PD : 0.130
+f1-score for PD : 0.260
 
 Recall for Cancer : 0.600
 Precision for Cancer : 0.738
-f1-score for Cancer : 0.331
+f1-score for Cancer : 0.662
 
 ------------------------------
 Confusion Matrix :
@@ -1047,7 +1047,7 @@ Accuracy : 0.260
 
 Recall for colon : 0.629
 Precision for colon : 0.517
-f1-score for colon : 0.284
+f1-score for colon : 0.568
 
 Recall for prostate : 0.002
 Precision for prostate : 0.000
@@ -1055,7 +1055,7 @@ f1-score for prostate : 0.000
 
 Recall for gastric : 0.004
 Precision for gastric : 0.023
-f1-score for gastric : 0.003
+f1-score for gastric : 0.006
 
 ------------------------------
 Confusion Matrix :
@@ -1081,20 +1081,19 @@ f1-score for Benign : nan
 
 Recall for WD : 0.362
 Precision for WD : 0.368
-f1-score for WD : 0.183
+f1-score for WD : 0.366
 
 Recall for MD : 0.563
 Precision for MD : 0.408
-f1-score for MD : 0.237
+f1-score for MD : 0.474
 
 Recall for PD : 0.267
 Precision for PD : 0.305
-f1-score for PD : 0.142
+f1-score for PD : 0.284
 
 Recall for Cancer : 1.000
 Precision for Cancer : 0.880
-f1-score for Cancer : 0.468
-
+f1-score for Cancer : 0.936
 ------------------------------
 Confusion Matrix : 
 label    0     1     2    3
@@ -1112,23 +1111,23 @@ Accuracy : 0.525
 
 Recall for Benign : 0.513
 Precision for Benign : 0.998
-f1-score for Benign : 0.339
+f1-score for Benign : 0.678
 
 Recall for WD : 0.141
 Precision for WD : 0.330
-f1-score for WD : 0.099
+f1-score for WD : 0.198
 
 Recall for MD : 0.605
 Precision for MD : 0.289
-f1-score for MD : 0.195
+f1-score for MD : 0.390
 
 Recall for PD : 0.816
 Precision for PD : 0.627
-f1-score for PD : 0.354
+f1-score for PD : 0.708
 
 Recall for Cancer : 1.000
 Precision for Cancer : 0.811
-f1-score for Cancer : 0.448
+f1-score for Cancer : 0.896
 
 ------------------------------
 Confusion Matrix : 
@@ -1147,23 +1146,23 @@ Accuracy : 0.304
 
 Recall for Benign : 0.229
 Precision for Benign : 0.569
-f1-score for Benign : 0.163
+f1-score for Benign : 0.326
 
 Recall for WD : 0.010
 Precision for WD : 0.015
-f1-score for WD : 0.006
+f1-score for WD : 0.012
 
 Recall for MD : 0.287
 Precision for MD : 0.761
-f1-score for MD : 0.208
+f1-score for MD : 0.416
 
 Recall for PD : 0.736
 Precision for PD : 0.129
-f1-score for PD : 0.110
+f1-score for PD : 0.220
 
 Recall for Cancer : 0.945
 Precision for Cancer : 0.795
-f1-score for Cancer : 0.432
+f1-score for Cancer : 0.864
 
 ------------------------------
 Confusion Matrix : 
@@ -1184,23 +1183,23 @@ Accuracy : 0.334
 
 Recall for Benign : 0.114
 Precision for Benign : 0.282
-f1-score for Benign : 0.081
+f1-score for Benign : 0.162
 
 Recall for WD : 0.328
 Precision for WD : 0.253
-f1-score for WD : 0.143
+f1-score for WD : 0.286
 
 Recall for MD : 0.656
 Precision for MD : 0.321
-f1-score for MD : 0.215
+f1-score for MD : 0.430
 
 Recall for PD : 0.377
 Precision for PD : 0.529
-f1-score for PD : 0.220
+f1-score for PD : 0.440
 
 Recall for Cancer : 0.861
 Precision for Cancer : 0.670
-f1-score for Cancer : 0.377
+f1-score for Cancer : 0.754
 
 ------------------------------
 Confusion Matrix : 
@@ -1218,23 +1217,23 @@ Accuracy : 0.587
 
 Recall for Benign : 0.961
 Precision for Benign : 0.978
-f1-score for Benign : 0.485
+f1-score for Benign : 0.970
 
 Recall for WD : 0.902
 Precision for WD : 0.243
-f1-score for WD : 0.191
+f1-score for WD : 0.382
 
 Recall for MD : 0.430
 Precision for MD : 0.792
-f1-score for MD : 0.279
+f1-score for MD : 0.558
 
 Recall for PD : 0.394
 Precision for PD : 0.237
-f1-score for PD : 0.148
+f1-score for PD : 0.296
 
 Recall for Cancer : 0.993
 Precision for Cancer : 0.988
-f1-score for Cancer : 0.495
+f1-score for Cancer : 0.990
 
 ------------------------------
 Confusion Matrix : 
@@ -1253,23 +1252,23 @@ Accuracy : 0.513
 
 Recall for Benign : 0.796
 Precision for Benign : 0.769
-f1-score for Benign : 0.391
+f1-score for Benign : 0.782
 
 Recall for WD : 0.362
 Precision for WD : 0.801
-f1-score for WD : 0.249
+f1-score for WD : 0.498
 
 Recall for MD : 0.452
 Precision for MD : 0.502
-f1-score for MD : 0.238
+f1-score for MD : 0.476
 
 Recall for PD : 0.829
 Precision for PD : 0.311
-f1-score for PD : 0.226
+f1-score for PD : 0.452
 
 Recall for Cancer : 0.967
 Precision for Cancer : 0.972
-f1-score for Cancer : 0.485
+f1-score for Cancer : 0.970
 
 ------------------------------
 Confusion Matrix : 
@@ -1290,7 +1289,7 @@ Accuracy : 0.763
 
 Recall for Benign : 0.929
 Precision for Benign : 0.974
-f1-score for Benign : 0.475
+f1-score for Benign : 0.950
 
 Recall for WD : 0.402
 Precision for WD : 0.623
@@ -1298,15 +1297,15 @@ f1-score for WD : 0.244
 
 Recall for MD : 0.781
 Precision for MD : 0.691
-f1-score for MD : 0.367
+f1-score for MD : 0.734
 
 Recall for PD : 0.821
 Precision for PD : 0.720
-f1-score for PD : 0.384
+f1-score for PD : 0.768
 
 Recall for Cancer : 0.991
 Precision for Cancer : 0.974
-f1-score for Cancer : 0.491
+f1-score for Cancer : 0.982
 
 ------------------------------
 Confusion Matrix :
@@ -1323,23 +1322,23 @@ Accuracy : 0.856
 
 Recall for Benign : 0.995
 Precision for Benign : 0.998
-f1-score for Benign : 0.498
+f1-score for Benign : 0.996
 
 Recall for WD : 0.479
 Precision for WD : 0.360
-f1-score for WD : 0.206
+f1-score for WD : 0.412
 
 Recall for MD : 0.870
 Precision for MD : 0.883
-f1-score for MD : 0.438
+f1-score for MD : 0.876
 
 Recall for PD : 0.723
 Precision for PD : 0.829
-f1-score for PD : 0.386
+f1-score for PD : 0.772
 
 Recall for Cancer : 0.999
 Precision for Cancer : 0.998
-f1-score for Cancer : 0.499
+f1-score for Cancer : 0.998
 
 ------------------------------
 Confusion Matrix : 
@@ -1356,23 +1355,23 @@ Accuracy : 0.427
 
 Recall for Benign : 0.507
 Precision for Benign : 0.576
-f1-score for Benign : 0.270
+f1-score for Benign : 0.540
 
 Recall for WD : 0.165
 Precision for WD : 0.634
-f1-score for WD : 0.131
+f1-score for WD : 0.262
 
 Recall for MD : 0.567
 Precision for MD : 0.420
-f1-score for MD : 0.241
+f1-score for MD : 0.482
 
 Recall for PD : 0.659
 Precision for PD : 0.318
-f1-score for PD : 0.214
+f1-score for PD : 0.428
 
 Recall for Cancer : 0.949
 Precision for Cancer : 0.934
-f1-score for Cancer : 0.471
+f1-score for Cancer : 0.942
 
 ------------------------------
 Confusion Matrix : 
@@ -1389,23 +1388,23 @@ Accuracy : 0.740
 
 Recall for Benign : 0.913
 Precision for Benign : 0.980
-f1-score for Benign : 0.473
+f1-score for Benign : 0.946
 
 Recall for WD : 0.439
 Precision for WD : 0.776
-f1-score for WD : 0.280
+f1-score for WD : 0.560
 
 Recall for MD : 0.629
 Precision for MD : 0.444
-f1-score for MD : 0.260
+f1-score for MD : 0.520
 
 Recall for PD : 0.868
 Precision for PD : 0.750
-f1-score for PD : 0.402
+f1-score for PD : 0.804
 
 Recall for Cancer : 0.991
 Precision for Cancer : 0.960
-f1-score for Cancer : 0.488
+f1-score for Cancer : 0.976
 
 ------------------------------
 Confusion Matrix : 
@@ -1428,23 +1427,23 @@ Accuracy : 0.775
 
 Recall for Benign : 0.939
 Precision for Benign : 0.932
-f1-score for Benign : 0.468
+f1-score for Benign : 0.936
 
 Recall for WD : 0.397
 Precision for WD : 0.773
-f1-score for WD : 0.262
+f1-score for WD : 0.524
 
 Recall for MD : 0.847
 Precision for MD : 0.680
-f1-score for MD : 0.377
+f1-score for MD : 0.754
 
 Recall for PD : 0.747
 Precision for PD : 0.778
-f1-score for PD : 0.381
+f1-score for PD : 0.762
 
 Recall for Cancer : 0.974
 Precision for Cancer : 0.977
-f1-score for Cancer : 0.488
+f1-score for Cancer : 0.976
 
 ------------------------------
 Confusion Matrix :
@@ -1462,23 +1461,23 @@ Accuracy : 0.839
 
 Recall for Benign : 0.949
 Precision for Benign : 0.971
-f1-score for Benign : 0.480
+f1-score for Benign : 0.960
 
 Recall for WD : 0.032
 Precision for WD : 0.253
-f1-score for WD : 0.028
+f1-score for WD : 0.056
 
 Recall for MD : 0.951
 Precision for MD : 0.813
-f1-score for MD : 0.438
+f1-score for MD : 0.876
 
 Recall for PD : 0.539
 Precision for PD : 0.735
-f1-score for PD : 0.311
+f1-score for PD : 0.622
 
 Recall for Cancer : 0.991
 Precision for Cancer : 0.984
-f1-score for Cancer : 0.494
+f1-score for Cancer : 0.988
 
 ------------------------------
 Confusion Matrix : 
@@ -1495,23 +1494,23 @@ Accuracy : 0.558
 
 Recall for Benign : 0.775
 Precision for Benign : 0.721
-f1-score for Benign : 0.374
+f1-score for Benign : 0.748
 
 Recall for WD : 0.108
 Precision for WD : 0.803
-f1-score for WD : 0.095
+f1-score for WD : 0.190
 
 Recall for MD : 0.906
 Precision for MD : 0.477
-f1-score for MD : 0.313
+f1-score for MD : 0.626
 
 Recall for PD : 0.597
 Precision for PD : 0.804
-f1-score for PD : 0.343
+f1-score for PD : 0.686
 
 Recall for Cancer : 0.959
 Precision for Cancer : 0.969
-f1-score for Cancer : 0.482
+f1-score for Cancer : 0.964
 
 ------------------------------
 Confusion Matrix : 
@@ -1528,23 +1527,23 @@ Accuracy : 0.757
 
 Recall for Benign : 0.943
 Precision for Benign : 0.922
-f1-score for Benign : 0.466
+f1-score for Benign : 0.932
 
 Recall for WD : 0.558
 Precision for WD : 0.795
-f1-score for WD : 0.328
+f1-score for WD : 0.656
 
 Recall for MD : 0.580
 Precision for MD : 0.467
-f1-score for MD : 0.259
+f1-score for MD : 0.518
 
 Recall for PD : 0.831
 Precision for PD : 0.787
-f1-score for PD : 0.404
+f1-score for PD : 0.808
 
 Recall for Cancer : 0.962
 Precision for Cancer : 0.972
-f1-score for Cancer : 0.484
+f1-score for Cancer : 0.968
 
 ------------------------------
 Confusion Matrix : 
@@ -1563,23 +1562,23 @@ Accuracy : 0.255
 
 Recall for Benign : 0.775
 Precision for Benign : 0.316
-f1-score for Benign : 0.224
+f1-score for Benign : 0.448
 
 Recall for WD : 0.163
 Precision for WD : 0.327
-f1-score for WD : 0.109
+f1-score for WD : 0.218
 
 Recall for MD : 0.010
 Precision for MD : 0.159
-f1-score for MD : 0.009
+f1-score for MD : 0.018
 
 Recall for PD : 0.056
 Precision for PD : 0.049
-f1-score for PD : 0.026
+f1-score for PD : 0.052
 
 Recall for Cancer : 0.367
 Precision for Cancer : 0.812
-f1-score for Cancer : 0.253
+f1-score for Cancer : 0.506
 
 ------------------------------
 Confusion Matrix :
@@ -1595,15 +1594,15 @@ Accuracy : 0.387
 
 Recall for colon : 0.044
 Precision for colon : 0.186
-f1-score for colon : 0.036
+f1-score for colon : 0.072
 
 Recall for prostate : 0.022
 Precision for prostate : 0.005
-f1-score for prostate : 0.004
+f1-score for prostate : 0.008
 
 Recall for gastric : 0.716
 Precision for gastric : 0.663
-f1-score for gastric : 0.344
+f1-score for gastric : 0.688
 
 ------------------------------
 Confusion Matrix :
