@@ -40,10 +40,10 @@ def analysis(result):
     cancer_index = (result['label'] != 0)
     recall_cancer = (result['infer'][cancer_index] != 0).mean()
     precision_cancer = (result['label'][result['infer'] != 0] != 0).mean()
-    f1_cancer = (recall_cancer * precision_cancer) / (recall_cancer + precision_cancer)
+    f1_cancer = 2 * (recall_cancer * precision_cancer) / (recall_cancer + precision_cancer)
 
     def harmonics(grade):
-        return (recall_metrics[grade][grade] * precision_metrics[grade][grade]) / (
+        return 2 * (recall_metrics[grade][grade] * precision_metrics[grade][grade]) / (
                 recall_metrics[grade][grade] + precision_metrics[grade][grade])
 
     print('-' * 30)
@@ -86,7 +86,7 @@ def multi_task_analysis(result):
     precision_metrics = pd.crosstab(result['infer_organ'], result['organ'], normalize='index')
 
     def harmonics(grade):
-        return (recall_metrics[grade][grade] * precision_metrics[grade][grade]) / (
+        return 2 * (recall_metrics[grade][grade] * precision_metrics[grade][grade]) / (
                 recall_metrics[grade][grade] + precision_metrics[grade][grade])
 
     print('-' * 30)
